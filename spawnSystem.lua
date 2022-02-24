@@ -151,16 +151,16 @@ end
 --Merge spawn jsons together
 function spawnSystem.init()
     for _,tableEntry in pairs(spawnConfig.spawnTables) do
-        local table = jsonInterface.load("custom/spawnData/"..tableEntry.name)
+        local jsonTable = jsonInterface.load("custom/spawnData/"..tableEntry.name)
         tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Loading "..tableEntry.name.." into spawn table")
         --spawnType will be cell, refId, uniqueIndex, npcTemplates, or creatureTemplates
-        for spawnType,subTable in pairs(table) do
+        for spawnType,subTable in pairs(jsonTable) do
             if tableHelper.isEmpty(spawnTable[spawnType]) then
                 spawnTable[spawnType] = subTable
             else 
                 --id will be a cell id, refId, uniqueIndex, or templateName
                 for id, spawnList in pairs(subTable) do
-                    if tableHelper.isEmpty(spawnTable[spawnType][id]) then
+                    if spawnTable[spawnType][id] == nil then
                         spawnTable[spawnType][id] = spawnList
                     elseif tableEntry.mergeType == 0 then
                         spawnTable[spawnType][id] = spawnList
