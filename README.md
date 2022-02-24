@@ -21,3 +21,7 @@ By default this script won't do anything, it is designed to read json files form
   - Duplicates imperial guards & mudcrabs
   - Adds some protection for Arrille
   - Spawns mudcrabs and imperial guards in a couple shacks in seyda need
+- exampleTwo.json
+  - Similar to exampleSpawns, designed for testing/preview of merge/overwrite
+- creatureDuplication.json
+  - Duplicate spawns of generic creature types
