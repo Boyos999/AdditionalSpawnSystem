@@ -47,7 +47,7 @@
         "mudcrab":[
             {
                 "refId":"mudcrab",
-                "count":4,
+                "count":2,
                 "useMult":true
             }
         ],
@@ -68,7 +68,7 @@
         "imperial guard":[
             {
                 "refId":"imperial guard",
-                "count":4,
+                "count":2,
                 "useMult":true
             }
         ]
@@ -91,23 +91,30 @@
     },
     "npcTemplates": {
         "generic_warrior":{
+            "aiFight":90,
             "class":"warrior",
             "level":5,
-            "name":"Generic Warrior"
+            "name":"Generic Warrior",
+            "race":["orc","nord","imperial","redguard"],
+            "invTemplate":"inv_warrior"
         },
         "dark_elf_mage":{
+            "aiFight":90,
             "class":"mage",
             "gender":"female",
             "head":["b_n_dark elf_f_head_02","b_n_dark elf_f_head_03","b_n_dark elf_f_head_09","b_n_dark elf_f_head_10"],
             "hair":["b_n_dark elf_f_hair_01","b_n_dark elf_f_hair_02","b_n_dark elf_f_hair_03","b_n_dark elf_f_hair_18","b_n_dark elf_f_hair_19"],
             "level":15,
             "name":"Dark Elf Mage",
-            "race":"dark elf"
+            "race":"dark elf",
+            "invTemplate":"inv_mage"
         },
         "completely_random":{
+            "aiFight":90,
             "name":"Random"
         },
         "specific_orc":{
+            "aiFight":90,
             "class":"scout",
             "gender":"male",
             "head":"b_n_orc_m_head_02",
@@ -116,11 +123,25 @@
             "race":"orc"
         },
         "semi_random_breton":{
+            "aiFight":90,
             "class":["crusader","healer","knight","mage","sorcerer","spellsword"],
             "level":[10,15,25],
             "race":"breton"
         }
     },
     "creatureTemplates": {},
-    "inventoryTemplates": {}
+    "inventoryTemplates": {
+        "inv_warrior":[
+            ["iron longsword","iron mace","iron battle axe"],
+            ["common_shirt_01","common_shirt_02","common_shirt_03"],
+            ["common_pants_01","common_pants_02","common_pants_03"],
+            ["iron_cuirass","steel_cuirass"],
+            ["iron boots","steel_boots"]
+        ],
+        "inv_mage":[
+            ["common_robe_01","common_robe_02","common_robe_03"],
+            ["common_shoes_01","common_shoes_02","common_shoes_03"],
+            "silver staff"
+        ]
+    }
 }

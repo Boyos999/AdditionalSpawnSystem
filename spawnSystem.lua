@@ -15,6 +15,17 @@ local pendingCells = {}
 
 function spawnSystem.buildInventory(templateName)
     local templateData = spawnTable.inventoryTemplates[templateName]
+    local inv = {}
+    tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Building inventory from template "..templateName)
+    for _,items in pairs(templateData) do
+        if type(items) == "table" then
+            local rand = math.random(1,table.getn(items))
+            table.insert(inv, {id = items[rand], count = 1})
+        else
+            table.insert(inv, {id = items, count = 1})
+        end
+    end
+    return inv
 end
 
 function spawnSystem.buildNpc(templateName)
@@ -31,7 +42,6 @@ function spawnSystem.buildNpc(templateName)
         if type(value) == "table" then
             local rand = math.random(1,table.getn(value))
             recordData[key] = value[rand]
-            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: table "..key.." = "..value[rand])
         else
             if key == "gender" then
                 if value == "male" then
@@ -40,10 +50,11 @@ function spawnSystem.buildNpc(templateName)
                     tempGender = 0
                 end
                 recordData[key] = tempGender
+            elseif key == "invTemplate" then
+                recordData["items"] = spawnSystem.buildInventory(value)
             else
                 recordData[key] = value
             end
-            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: string "..key.." = "..value)
         end
     end
 
@@ -63,7 +74,6 @@ function spawnSystem.buildNpc(templateName)
                 recordData[setting] = appearanceTable[math.random(1,table.getn(appearanceTable))]
             end
         end
-        tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: "..setting.." = "..recordData[setting])
     end
 
     recordStore.data.generatedRecords[id] = recordData
@@ -77,7 +87,6 @@ function spawnSystem.buildNpc(templateName)
     tes3mp.SetRecordType(enumerations.recordType[string.upper("npc")])
     packetBuilder.AddNpcRecord(id, recordData)
     tes3mp.SendRecordDynamic(pid, true, false)
-    tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Finished Building custom NPC record "..id.." for "..templateName)
 
     return id
 end
