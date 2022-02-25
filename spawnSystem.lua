@@ -7,27 +7,91 @@ local spawnTable = {
     refId = {},
     uniqueIndex = {},
     npcTemplates = {},
-    creatureTemplates = {}
+    creatureTemplates = {},
+    inventoryTemplates = {}
 }
 
 local pendingCells = {}
 
-function spawnSystem.buildNpc(pid,templateName)
+function spawnSystem.buildInventory(templateName)
+    local templateData = spawnTable.inventoryTemplates[templateName]
 end
 
-function spawnSystem.buildCreature(pid,templateName)
+function spawnSystem.buildNpc(templateName)
+    local templateData = spawnTable.npcTemplates[templateName]
+    local recordData = {autoCalc = 1}
+    local recordStore = RecordStores["npc"]
+    local tempGender
+    local id = recordStore:GenerateRecordId()
+    local pid = tableHelper.getAnyValue(Players).pid
+
+    tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Building custom NPC record "..id.." for "..templateName)
+
+    for key,value in pairs(templateData) do
+        if type(value) == "table" then
+            local rand = math.random(1,table.getn(value))
+            recordData[key] = value[rand]
+            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: table "..key.." = "..value[rand])
+        else
+            if key == "gender" then
+                if value == "male" then
+                    tempGender = 1
+                elseif value == "female" then
+                    tempGender = 0
+                end
+                recordData[key] = tempGender
+            else
+                recordData[key] = value
+            end
+            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: string "..key.." = "..value)
+        end
+    end
+
+    for _,setting in pairs(spawnConfig.npcRequired) do
+        if recordData[setting] == nil then
+            if setting == "name" then
+                recordData[setting] = templateName
+            elseif setting == "level" then
+                recordData[setting] = math.random(spawnConfig.level[1],spawnConfig.level[2])
+            elseif setting == "race" or setting == "class" then
+                recordData[setting] = spawnConfig[setting][math.random(1,table.getn(spawnConfig[setting]))]
+            elseif setting == "gender" then
+                recordData[setting] = math.random(0,1)
+                tempGender = spawnConfig[setting][recordData[setting]+1]
+            elseif setting == "hair" or setting == "head" then
+                local appearanceTable = spawnConfig.npcInfo[recordData.race][tempGender][setting]
+                recordData[setting] = appearanceTable[math.random(1,table.getn(appearanceTable))]
+            end
+        end
+        tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: "..setting.." = "..recordData[setting])
+    end
+
+    recordStore.data.generatedRecords[id] = recordData
+    for _, player in pairs(Players) do
+        if not tableHelper.containsValue(Players[pid].generatedRecordsReceived, id) then
+            table.insert(player.generatedRecordsReceived, id)
+        end
+    end
+    recordStore:Save()
+    tes3mp.ClearRecords()
+    tes3mp.SetRecordType(enumerations.recordType[string.upper("npc")])
+    packetBuilder.AddNpcRecord(id, recordData)
+    tes3mp.SendRecordDynamic(pid, true, false)
+    tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Finished Building custom NPC record "..id.." for "..templateName)
+
+    return id
+end
+
+function spawnSystem.buildCreature(templateName)
+    local templateData = spawnTable.creatureTemplates[templateName]
 end
 
 function spawnSystem.spawnAtActors(spawnList,cellDescription)
     local objects = {}
     for _,spawn in pairs(spawnList) do
         local numSpawns = spawn.spawnData.count
-        local objectData = { refId = spawn.spawnData.refId, location = spawn.location }
-        if spawn.spawnData.scale ~= nil then
-            objectData.scale = spawn.spawnData.scale
-        else
-            objectData.scale = 1
-        end
+        local objectData = spawnSystem.getSpawnData(spawn.spawnData)
+        objectData.location = spawn.location
 
         if spawn.spawnData.useMult then
             numSpawns = math.floor(numSpawns*spawnConfig.spawnMult)
@@ -41,6 +105,28 @@ function spawnSystem.spawnAtActors(spawnList,cellDescription)
     if not tableHelper.isEmpty(objects) then
         logicHandler.CreateObjects(cellDescription,objects,"spawn")
     end
+end
+
+function spawnSystem.getSpawnData(spawn)
+    local object = {}
+    if spawn.template ~= nil then
+        tes3mp.LogMessage(enumerations.log.WARN,"SpawnSystem: DEBUG template found "..spawn.template)
+        if spawnTable.npcTemplates[spawn.template] ~= nil then
+            object.refId = spawnSystem.buildNpc(spawn.template)
+            tes3mp.LogMessage(enumerations.log.WARN,"SpawnSystem: DEBUG template built "..spawn.template.." refId "..object.refId)
+        elseif spawnTable.creatureTemplates[spawn.template] ~= nil then
+            object.refId = spawnSystem.buildCreature(spawn.template)
+        end
+    else
+        object.refId = spawn.refId
+        tes3mp.LogMessage(enumerations.log.WARN,"SpawnSystem: DEBUG refId found "..spawn.refId)
+    end
+    if spawn.scale ~= nil then
+        object.scale = spawn.scale
+    else
+        object.scale = 1
+    end
+    return object
 end
 
 function spawnSystem.processActors(cellDescription)
@@ -88,15 +174,18 @@ function spawnSystem.processCell(cellDescription)
         local totalPlace = 0
         local totalSpawn = 0
         for _,spawn in pairs(spawnTable.cell[cellDescription]) do
-            local object = {refId = spawn.refId, location = spawn.location}
+            local object = {}
             if spawn.packetType == "spawn" then
-                object.count = 1
-                object.scale = 1
+                tes3mp.LogMessage(enumerations.log.WARN,"SpawnSystem: DEBUG spawn packet type")
+                object = spawnSystem.getSpawnData(spawn)
+                object.location = spawn.location
                 for i=1,spawn.count do
                     table.insert(spawnObjects,object)
                     totalSpawn = totalSpawn + 1
                 end
             elseif spawn.packetType == "place" then
+                object.refId = spawn.refId
+                object.location = spawn.location
                 object.count = spawn.count
                 object.charge = -1
                 object.enchantmentCharge = -1
@@ -164,19 +253,28 @@ function spawnSystem.init()
                         spawnTable[spawnType][id] = spawnList
                     elseif tableEntry.mergeType == 0 then
                         spawnTable[spawnType][id] = spawnList
-                        tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Overwriting "..spawnType.." spawns for "..id.." with spawns from "..tableEntry.name)
+                        tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Overwriting "..spawnType.." entry for "..id.." with entry from "..tableEntry.name)
                     elseif tableEntry.mergeType == 1 then
-                        tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Merging "..spawnType.." spawns for "..id.." with spawns from "..tableEntry.name)
-                        for _,spawn in pairs(spawnList) do
-                            table.insert(spawnTable[spawnType][id],spawn)
+                        if spawnType == "cell" or spawnType == "refId" or spawnType == "uniqueIndex" then
+                            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Merging "..spawnType.." entry for "..id.." with entry from "..tableEntry.name)
+                            for _,spawn in pairs(spawnList) do
+                                table.insert(spawnTable[spawnType][id],spawn)
+                            end
+                        else
+                            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Skipping "..spawnType.." entry for "..id.." from "..tableEntry.name.." because templates cannot be merged")
                         end
                     elseif tableEntry.mergeType == 2 then
-                        tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Skipping "..spawnType.." spawns for "..id.." from "..tableEntry.name)
+                        tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Skipping "..spawnType.." entry for "..id.." from "..tableEntry.name)
                     end
                 end
             end
         end
     end
+    math.randomseed(os.time())
+    math.random()
+    math.random()
+    math.random()
+    math.random()
 end
 
 customEventHooks.registerHandler("OnCellLoad",spawnSystem.OnCellLoad)

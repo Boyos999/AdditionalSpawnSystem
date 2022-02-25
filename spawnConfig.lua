@@ -24,3 +24,24 @@ spawnConfig.spawnMult = 1
 --Time in ms between when OnActorList is called and when actor positions are saved
 --for spawns, this is needed because it takes time for position packets to be sent
 spawnConfig.actorSpawnTimer = 500
+
+--Vanilla Classes (only playable classes included by default)
+spawnConfig.class = {"acrobat","agent","archer","assassin","barbarian","bard",
+                       "battlemage","crusader","healer","knight","mage","monk",
+                       "nightblade","pilgrim","rogue","scout","sorcerer","spellsword",
+                       "thief","warrior","witchhunter"}
+
+--Vanilla Data on npc appearances
+spawnConfig.npcInfo = jsonInterface.load("custom/spawnVanillaData/npcInfo.json")
+
+--Vanilla races
+spawnConfig.race = {"argonian","breton","dark elf","high elf","imperial","khajiit","nord","orc","redguard","wood elf"}
+
+--Vanilla genders
+spawnConfig.gender = {"female","male"}
+
+--Level range if no level is declared
+spawnConfig.level = {1,30}
+
+--Settings that will be filled in randomly if not declared
+spawnConfig.npcRequired = {"name","level","class","race","gender","head","hair"}

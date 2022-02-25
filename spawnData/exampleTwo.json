@@ -49,5 +49,6 @@
         ]
     },
     "npcTemplates": {},
-    "creatureTemplates": {}
+    "creatureTemplates": {},
+    "inventoryTemplates": {}
 }
