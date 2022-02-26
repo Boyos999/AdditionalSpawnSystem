@@ -17,7 +17,7 @@
         ],
         "slaughterfish_small":[
             {
-                "refId":"cliff racer_blighted",
+                "refId":"slaughterfish_small",
                 "count":3,
                 "useMult":true
             }
