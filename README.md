@@ -16,13 +16,9 @@ To Install:
 By default this script won't do anything, it is designed to read json files formatted like in the exampleSpawns.json. In spawnConfig.lua you can define which json files you want to include in your spawn tables, as well as define how you want those spawns to be merged with other configs. Read the comments for the config settings for more details.
 
 # Included Spawn Tables
-- exampleSpawns.json
-  - Everything in this table is designed to be seen in seyda need, for testing/showcasing
-  - Duplicates imperial guards & mudcrabs
-  - Adds some protection for Arrille
-  - Spawns mudcrabs and imperial guards in a couple shacks in seyda need
-- exampleTwo.json
-  - Similar to exampleSpawns, designed for testing/preview of merge/overwrite
+- example\*.json
+  - Everything in these tables is designed to be seen in seyda neen, for testing/showcasing
+  - These tables are not suited to actually playing the game with
 - creatureDuplication.json
   - Duplicate spawns of generic creature types
 - highSecurity.json

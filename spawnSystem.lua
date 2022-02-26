@@ -16,7 +16,9 @@ local pendingCells = {}
 function spawnSystem.buildInventory(templateName)
     local templateData = spawnTable.inventoryTemplates[templateName]
     local inv = {}
+
     tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Building inventory from template "..templateName)
+
     for _,items in pairs(templateData) do
         if type(items) == "table" then
             local rand = math.random(1,table.getn(items))
@@ -25,6 +27,7 @@ function spawnSystem.buildInventory(templateName)
             table.insert(inv, {id = items, count = 1})
         end
     end
+
     return inv
 end
 
@@ -39,10 +42,12 @@ function spawnSystem.buildNpc(templateName)
     tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Building custom NPC record "..id.." for "..templateName)
 
     for key,value in pairs(templateData) do
+        --If a value on the template is an array pick a random entry
         if type(value) == "table" then
             local rand = math.random(1,table.getn(value))
             recordData[key] = value[rand]
         else
+            --Translate genders to numbers
             if key == "gender" then
                 if value == "male" then
                     tempGender = 1
@@ -58,6 +63,7 @@ function spawnSystem.buildNpc(templateName)
         end
     end
 
+    --Fill in required settings with random values if unspecified
     for _,setting in pairs(spawnConfig.npcRequired) do
         if recordData[setting] == nil then
             if setting == "name" then
@@ -97,6 +103,7 @@ end
 
 function spawnSystem.spawnAtActors(spawnList,cellDescription)
     local objects = {}
+    
     for _,spawn in pairs(spawnList) do
         local numSpawns = spawn.spawnData.count
         local objectData = spawnSystem.getSpawnData(spawn.spawnData)
@@ -105,12 +112,15 @@ function spawnSystem.spawnAtActors(spawnList,cellDescription)
         if spawn.spawnData.useMult then
             numSpawns = math.floor(numSpawns*spawnConfig.spawnMult)
         end
+
         if numSpawns >=1 then
             for i=1,numSpawns do
                 table.insert(objects,objectData)
             end
         end
+
     end
+
     if not tableHelper.isEmpty(objects) then
         logicHandler.CreateObjects(cellDescription,objects,"spawn")
     end
@@ -118,23 +128,24 @@ end
 
 function spawnSystem.getSpawnData(spawn)
     local object = {}
+
+    --If this spawn has a template build it
     if spawn.template ~= nil then
-        tes3mp.LogMessage(enumerations.log.WARN,"SpawnSystem: DEBUG template found "..spawn.template)
         if spawnTable.npcTemplates[spawn.template] ~= nil then
             object.refId = spawnSystem.buildNpc(spawn.template)
-            tes3mp.LogMessage(enumerations.log.WARN,"SpawnSystem: DEBUG template built "..spawn.template.." refId "..object.refId)
         elseif spawnTable.creatureTemplates[spawn.template] ~= nil then
             object.refId = spawnSystem.buildCreature(spawn.template)
         end
     else
         object.refId = spawn.refId
-        tes3mp.LogMessage(enumerations.log.WARN,"SpawnSystem: DEBUG refId found "..spawn.refId)
     end
+
     if spawn.scale ~= nil then
         object.scale = spawn.scale
     else
         object.scale = 1
     end
+
     return object
 end
 
@@ -144,13 +155,16 @@ function spawnSystem.processActors(cellDescription)
     tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Processing Actor based spawns for "..cellDescription)
 
     local spawnList = {}
+
     --Identify actors in cell we want to do anything with
     for _,uniqueIndex in pairs(cellData.packets.actorList) do
+        
         --Skip actors placed via cell spawns
         if pendingCells[cellDescription] ~= nil and tableHelper.containsValue(pendingCells[cellDescription],uniqueIndex) and spawnConfig.actorSpawnOnCellSpawn == false then
             tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Skipped Actor with uniqueIndex " ..uniqueIndex.." because they were spawned by the cell spawn list for "..cellDescription)
         else
             local actor = cellData.objectData[uniqueIndex]
+
             if actor.location ~= nil then
                 if spawnTable.uniqueIndex[uniqueIndex] ~= nil then
                     for _,spawn in pairs(spawnTable.uniqueIndex[uniqueIndex]) do
@@ -158,6 +172,7 @@ function spawnSystem.processActors(cellDescription)
                     end
                     tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Actor matched by Unique Index: "..uniqueIndex.."|"..actor.refId.."|"..actor.location.posX.."|"..actor.location.posY.."|"..actor.location.posZ)
                 end
+
                 if spawnTable.refId[actor.refId] ~= nil then
                     for _,spawn in pairs(spawnTable.refId[actor.refId]) do
                         table.insert(spawnList,{spawnData = spawn, location = actor.location})
@@ -182,10 +197,10 @@ function spawnSystem.processCell(cellDescription)
         local uniqueIndexes = {}
         local totalPlace = 0
         local totalSpawn = 0
+
         for _,spawn in pairs(spawnTable.cell[cellDescription]) do
             local object = {}
             if spawn.packetType == "spawn" then
-                tes3mp.LogMessage(enumerations.log.WARN,"SpawnSystem: DEBUG spawn packet type")
                 object = spawnSystem.getSpawnData(spawn)
                 object.location = spawn.location
                 for i=1,spawn.count do
@@ -208,9 +223,14 @@ function spawnSystem.processCell(cellDescription)
                 totalPlace = totalPlace + 1
             end
         end
+
+        --Place non-actors and spawn actors
         uniqueIndexes = logicHandler.CreateObjects(cellDescription,placeObjects,"place")
         tableHelper.merge(uniqueIndexes,logicHandler.CreateObjects(cellDescription,spawnObjects,"spawn"),true)
+
         tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Placed "..totalPlace.." objects and spawned "..totalSpawn.." actors for "..cellDescription)
+
+        --Store unique indexes of placed/spawned objects so we don't duplicate them in processActors()
         pendingCells[cellDescription] = uniqueIndexes
     else
         tes3mp.LogMessage(enumerations.log.WARN,"SpawnSystem: Skipped spawns for cell "..cellDescription.." because spawns have already been processed")
@@ -225,7 +245,7 @@ function spawnSystem.OnActorList(eventStatus,pid,cellDescription,actors)
                 spawnSystem.processCell(cellDescription)
             end
 
-            --process actors
+            --process actors on a delay so there's time for the position packets to arrive
             local actorListTimer = tes3mp.CreateTimerEx("spawnSystemTimerFunc",spawnConfig.actorSpawnTimer,"s",cellDescription)
             tes3mp.StartTimer(actorListTimer)
         end
@@ -239,6 +259,7 @@ end
 
 function spawnSystem.OnCellLoad(eventStatus,pid,cellDescription)
     if eventStatus.validCustomHandlers and eventStatus.validDefaultHandler then
+        --If this cell has not been initialized or has been reset add it to the list of cells that need spawns
         if LoadedCells[cellDescription].data.loadState.hasFullActorList ~= true then
             table.insert(pendingCells,cellDescription)
             tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Added cell " .. cellDescription .." to cells pending spawns")
@@ -279,6 +300,7 @@ function spawnSystem.init()
             end
         end
     end
+    --Establish randomseed on server start
     math.randomseed(os.time())
     math.random()
     math.random()
