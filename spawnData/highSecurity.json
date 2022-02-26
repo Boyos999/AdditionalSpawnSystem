@@ -1,0 +1,135 @@
+{
+    "cell": {},
+    "refId": {
+        "ordinator wander":[
+            {
+                "refId":"ordinator wander",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "ordinator stationary":[
+            {
+                "refId":"ordinator stationary",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "ordinator_mh_stationary":[
+            {
+                "refId":"ordinator_mh_stationary",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "ordinator_mournhold":[
+            {
+                "refId":"ordinator_mournhold",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "guard_helseth":[
+            {
+                "refId":"guard_helseth",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "imperial guard captain":[
+            {
+                "refId":"imperial guard captain",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "imperial guard":[
+            {
+                "refId":"imperial guard",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "imperial guard_ebonhear":[
+            {
+                "refId":"imperial guard_ebonhear",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "imperial guard_company":[
+            {
+                "refId":"imperial guard_company",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "imperial archer":[
+            {
+                "refId":"imperial archer",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "telvanni guard":[
+            {
+                "refId":"telvanni guard",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "telvanni guard_stand":[
+            {
+                "refId":"telvanni guard_stand",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "telvanni sharpshooter":[
+            {
+                "refId":"telvanni sharpshooter",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "hlaalu guard":[
+            {
+                "refId":"hlaalu guard",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "hlaalu guard_outside":[
+            {
+                "refId":"hlaalu guard_outside",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "redoran guard male":[
+            {
+                "refId":"redoran guard male",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "redoran guard_andasreth":[
+            {
+                "refId":"redoran guard_andasreth",
+                "count":1,
+                "useMult":true
+            }
+        ],
+        "redoran guard female":[
+            {
+                "refId":"redoran guard female",
+                "count":1,
+                "useMult":true
+            }
+        ]
+    },
+    "uniqueIndex": {},
+    "npcTemplates": {},
+    "creatureTemplates": {},
+    "inventoryTemplates": {}
+}

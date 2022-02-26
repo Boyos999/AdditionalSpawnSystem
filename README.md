@@ -17,7 +17,7 @@ By default this script won't do anything, it is designed to read json files form
 
 # Included Spawn Tables
 - exampleSpawns.json
-  - Everything in this table is designed to be seen in seyda need, for quick testing/previewing
+  - Everything in this table is designed to be seen in seyda need, for testing/showcasing
   - Duplicates imperial guards & mudcrabs
   - Adds some protection for Arrille
   - Spawns mudcrabs and imperial guards in a couple shacks in seyda need
@@ -25,3 +25,5 @@ By default this script won't do anything, it is designed to read json files form
   - Similar to exampleSpawns, designed for testing/preview of merge/overwrite
 - creatureDuplication.json
   - Duplicate spawns of generic creature types
+- highSecurity.json
+  - Duplicate guard spawns
