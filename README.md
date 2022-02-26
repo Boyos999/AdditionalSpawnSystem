@@ -9,7 +9,7 @@ To Install:
 
 3. In customScripts.lua add the following require statement
 ```
-    spawnSystem = require("custom.AdditionalSpawnSystem.spawnSystem.lua")
+    spawnSystem = require("custom.AdditionalSpawnSystem.spawnSystem")
 ```
 
 # Configuration
