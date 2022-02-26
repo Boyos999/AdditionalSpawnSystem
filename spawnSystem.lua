@@ -88,7 +88,7 @@ function spawnSystem.buildNpc(templateName)
             table.insert(player.generatedRecordsReceived, id)
         end
     end
-    recordStore:Save()
+
     tes3mp.ClearRecords()
     tes3mp.SetRecordType(enumerations.recordType[string.upper("npc")])
     packetBuilder.AddNpcRecord(id, recordData)
@@ -103,10 +103,11 @@ end
 
 function spawnSystem.spawnAtActors(spawnList,cellDescription)
     local objects = {}
-    
+    local templateBuilt = false
+
     for _,spawn in pairs(spawnList) do
         local numSpawns = spawn.spawnData.count
-        local objectData = spawnSystem.getSpawnData(spawn.spawnData)
+        local objectData, templateBuilt = spawnSystem.getSpawnData(spawn.spawnData)
         objectData.location = spawn.location
 
         if spawn.spawnData.useMult then
@@ -121,6 +122,11 @@ function spawnSystem.spawnAtActors(spawnList,cellDescription)
 
     end
 
+    if templateBuilt then
+        RecordStores["npc"]:Save()
+        RecordStores["creature"]:Save()
+    end
+
     if not tableHelper.isEmpty(objects) then
         logicHandler.CreateObjects(cellDescription,objects,"spawn")
     end
@@ -128,6 +134,7 @@ end
 
 function spawnSystem.getSpawnData(spawn)
     local object = {}
+    local templateBuilt = false
 
     --If this spawn has a template build it
     if spawn.template ~= nil then
@@ -136,6 +143,7 @@ function spawnSystem.getSpawnData(spawn)
         elseif spawnTable.creatureTemplates[spawn.template] ~= nil then
             object.refId = spawnSystem.buildCreature(spawn.template)
         end
+        templateBuilt = true
     else
         object.refId = spawn.refId
     end
@@ -146,7 +154,7 @@ function spawnSystem.getSpawnData(spawn)
         object.scale = 1
     end
 
-    return object
+    return object, templateBuilt
 end
 
 function spawnSystem.processActors(cellDescription)
@@ -197,11 +205,12 @@ function spawnSystem.processCell(cellDescription)
         local uniqueIndexes = {}
         local totalPlace = 0
         local totalSpawn = 0
+        local templateBuilt = false
 
         for _,spawn in pairs(spawnTable.cell[cellDescription]) do
             local object = {}
             if spawn.packetType == "spawn" then
-                object = spawnSystem.getSpawnData(spawn)
+                object, templateBuilt = spawnSystem.getSpawnData(spawn)
                 object.location = spawn.location
                 for i=1,spawn.count do
                     table.insert(spawnObjects,object)
@@ -222,6 +231,11 @@ function spawnSystem.processCell(cellDescription)
                 table.insert(placeObjects,object)
                 totalPlace = totalPlace + 1
             end
+        end
+
+        if templateBuilt then
+            RecordStores["npc"]:Save()
+            RecordStores["creature"]:Save()
         end
 
         --Place non-actors and spawn actors
