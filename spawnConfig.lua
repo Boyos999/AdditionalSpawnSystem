@@ -103,9 +103,17 @@ Spawn Tables Spec
             "level":<int>,
             "name":<string>,
             "race":<string>                                         --See npcInfo.json for possible values
-        }
+            ...                                                     --Other settings in config.validRecordSettings.npc should work,
+        }                                                           --but use at own risk
     },
-    "creatureTemplates": {},                                        --TODO
+    "creatureTemplates": {
+        <template name>:{
+            "baseId":<creature refId>,                              --Required
+            "damageChop":{"min":<int>,"max":<int>},
+            "invTemplate":<inventory template name>
+            ...                                                     --Any other setting in config.validRecordSettings.creature
+        }
+    },                                        --TODO
     "inventoryTemplates": {
         <template name>:[                                           --Each entry in the template array can be a string or array
             <item refId>,                                           --For arrays a random item from the array will be chosen
