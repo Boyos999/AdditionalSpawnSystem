@@ -34,3 +34,6 @@ By default this script won't do anything, it is designed to read json files form
 1. Per spawnTable spawn multiplier
 2. Better inventory handling (set "count" per item refId)
 3. Some other stuff I probably forgot
+
+# Known Issues
+1. Spawns on refIds/uniqueIndexes are on a delay, this is because it takes time for the packets with the actor locations to arrive so we know where to spawn them. The delay is configurable via the config, your results may vary
