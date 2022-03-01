@@ -113,7 +113,7 @@ Spawn Tables Spec
             "invTemplate":<inventory template name>
             ...                                                     --Any other setting in config.validRecordSettings.creature
         }
-    },                                        --TODO
+    },
     "inventoryTemplates": {
         <template name>:[                                           --Each entry in the template array can be a string or array
             <item refId>,                                           --For arrays a random item from the array will be chosen
