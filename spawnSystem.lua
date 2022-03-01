@@ -13,6 +13,15 @@ local spawnTable = {
 
 local pendingCells = {}
 
+function spawnSystem.settingValueParser(value)
+    if type(value) == "table" then
+        local rand = math.random(1,table.getn(value))
+        return value[rand]
+    else
+        return value
+    end
+end
+
 function spawnSystem.buildInventory(templateName)
     local templateData = spawnTable.inventoryTemplates[templateName]
     local inv = {}
@@ -20,12 +29,8 @@ function spawnSystem.buildInventory(templateName)
     tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Building inventory from template "..templateName)
 
     for _,items in pairs(templateData) do
-        if type(items) == "table" then
-            local rand = math.random(1,table.getn(items))
-            table.insert(inv, {id = items[rand], count = 1})
-        else
-            table.insert(inv, {id = items, count = 1})
-        end
+        local itemId = spawnSystem.settingValueParser(items)
+        table.insert(inv, {id = itemId, count = 1})
     end
 
     return inv
@@ -43,23 +48,17 @@ function spawnSystem.buildNpc(templateName)
 
     for key,value in pairs(templateData) do
         --If a value on the template is an array pick a random entry
-        if type(value) == "table" then
-            local rand = math.random(1,table.getn(value))
-            recordData[key] = value[rand]
-        else
-            --Translate genders to numbers
-            if key == "gender" then
-                if value == "male" then
-                    tempGender = 1
-                elseif value == "female" then
-                    tempGender = 0
-                end
-                recordData[key] = tempGender
-            elseif key == "invTemplate" then
-                recordData["items"] = spawnSystem.buildInventory(value)
-            else
-                recordData[key] = value
+        local selectedValue = spawnSystem.settingValueParser(value)
+        if key == "gender" then
+            if selectedValue == "male" then
+                recordData[key] = 1
+            elseif selectedValue == "female" then
+                recordData[key] = 0
             end
+        elseif key == "invTemplate" then
+            recordData["items"] = spawnSystem.buildInventory(selectedValue)
+        else
+            recordData[key] = selectedValue
         end
     end
 
