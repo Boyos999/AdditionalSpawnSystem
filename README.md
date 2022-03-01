@@ -29,3 +29,8 @@ By default this script won't do anything, it is designed to read json files form
   - For when you're playing with friends who don't know what a cliff racer is
 - deadlyWaters.json
   - Significant increase in water-based creatures
+
+# Future planned additions
+1. Per spawnTable spawn multiplier
+2. Better inventory handling (set "count" per item refId)
+3. Some other stuff I probably forgot
