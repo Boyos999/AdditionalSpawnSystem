@@ -106,6 +106,7 @@ function spawnSystem.buildCreature(templateName)
 
     for key,value in pairs(templateData) do
         local selectedValue
+        --Handle damage differently because a single "value" will be a table
         if key == "damageThrust" or key == "damageSlash" or key == "damageChop" then
             if type(value) == "table" and type(value[1]) ~= "table" then
                 selectedValue = value
@@ -122,6 +123,8 @@ function spawnSystem.buildCreature(templateName)
             recordData[key] = selectedValue
         end
     end
+
+    --tes3mp can't create creatures without baseIds due to not having all the record settings implemented
     if recordData["baseId"] == nil then
         recordData["baseId"] = "cliff racer"
         tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Someone didn't read the config and didn't set a baseId, defaulting to cliff racer")
