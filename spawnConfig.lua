@@ -91,7 +91,8 @@ Spawn Tables Spec
             "aiAlarm":<0-100>,                                      --one item from the array will be randomly chosen    
             "aiFight":<0-100>,                                      --unassigned required values will be randomized
             "aiFlee":<0-100>,
-            "aiServices":<flags>
+            "aiServices":<flags>,
+            "autoCalc":<0-1>,                                       --Only set to 0 if using baseId, defaults to 1
             "baseId":<npc refId>,
             "class":<string>,
             "faction":<string>,
