@@ -107,7 +107,7 @@ function spawnSystem.buildCreature(templateName)
     for key,value in pairs(templateData) do
         local selectedValue
         if key == "damageThrust" or key == "damageSlash" or key == "damageChop" then
-            if type(value) == "table" and value[min] ~= nil then
+            if type(value) == "table" and type(value[1]) ~= "table" then
                 selectedValue = value
             else
                 selectedValue = spawnSystem.settingValueParser(value)

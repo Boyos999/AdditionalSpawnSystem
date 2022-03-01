@@ -63,6 +63,10 @@
             {
                 "template":"semi_random_breton",
                 "count":1
+            },
+            {
+                "template":"mega_crab",
+                "count":1
             }
         ],
         "imperial guard":[
@@ -137,7 +141,7 @@
             "damageSlash":[{"min":1,"max":2},{"min":3,"max":4},{"min":5,"max":6}],
             "damageThrust":{"min":1,"max":10},
             "name":"Mega Crab",
-            "scale":10
+            "scale":2
         }
     },
     "inventoryTemplates": {
