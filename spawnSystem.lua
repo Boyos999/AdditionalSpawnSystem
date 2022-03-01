@@ -40,7 +40,6 @@ function spawnSystem.buildNpc(templateName)
     local templateData = spawnTable.npcTemplates[templateName]
     local recordData = {autoCalc = 1}
     local recordStore = RecordStores["npc"]
-    local tempGender
     local id = recordStore:GenerateRecordId()
     local pid = tableHelper.getAnyValue(Players).pid
 
@@ -64,7 +63,7 @@ function spawnSystem.buildNpc(templateName)
 
     --Fill in required settings with random values if unspecified
     for _,setting in pairs(spawnConfig.npcRequired) do
-        if recordData[setting] == nil then
+        if recordData[setting] == nil and recordData["baseId"] == nil then
             if setting == "name" then
                 recordData[setting] = templateName
             elseif setting == "level" then
@@ -98,6 +97,49 @@ end
 
 function spawnSystem.buildCreature(templateName)
     local templateData = spawnTable.creatureTemplates[templateName]
+    local recordData = {}
+    local recordStore = RecordStores["creature"]
+    local id = recordStore:GenerateRecordId()
+    local pid = tableHelper.getAnyValue(Players).pid
+
+    tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Building custom creature record "..id.." for "..templateName)
+
+    for key,value in pairs(templateData) do
+        local selectedValue
+        if key == "damageThrust" or key == "damageSlash" or key == "damageChop" then
+            if type(value) == "table" and value[min] ~= nil then
+                selectedValue = value
+            else
+                selectedValue = spawnSystem.settingValueParser(value)
+            end
+        else
+            selectedValue = spawnSystem.settingValueParser(value)
+        end
+
+        if key == "invTemplate" then
+            recordData["items"] = spawnSystem.buildInventory(selectedValue)
+        else
+            recordData[key] = selectedValue
+        end
+    end
+    if recordData["baseId"] == nil then
+        recordData["baseId"] = "cliff racer"
+        tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Someone didn't read the config and didn't set a baseId, defaulting to cliff racer")
+    end
+
+    recordStore.data.generatedRecords[id] = recordData
+    for _, player in pairs(Players) do
+        if not tableHelper.containsValue(Players[pid].generatedRecordsReceived, id) then
+            table.insert(player.generatedRecordsReceived, id)
+        end
+    end
+
+    tes3mp.ClearRecords()
+    tes3mp.SetRecordType(enumerations.recordType[string.upper("creature")])
+    packetBuilder.AddCreatureRecord(id, recordData)
+    tes3mp.SendRecordDynamic(pid, true, false)
+
+    return id
 end
 
 function spawnSystem.spawnAtActors(spawnList,cellDescription)
