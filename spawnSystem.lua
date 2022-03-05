@@ -369,3 +369,5 @@ end
 customEventHooks.registerHandler("OnCellLoad",spawnSystem.OnCellLoad)
 customEventHooks.registerHandler("OnActorList",spawnSystem.OnActorList)
 customEventHooks.registerHandler("OnServerPostInit",spawnSystem.init)
+
+return spawnSystem

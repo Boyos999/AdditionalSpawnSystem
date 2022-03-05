@@ -25,11 +25,14 @@ spawnConfig.spawnMult = 1
 --for spawns, this is needed because it takes time for position packets to be sent
 spawnConfig.actorSpawnTimer = 500
 
+--Minimum required staff rank to use spawnAdmin commands
+spawnConfig.staffRankReq = 2
+
 --Vanilla Classes (only playable classes included by default)
 spawnConfig.class = {"acrobat","agent","archer","assassin","barbarian","bard",
-                       "battlemage","crusader","healer","knight","mage","monk",
-                       "nightblade","pilgrim","rogue","scout","sorcerer","spellsword",
-                       "thief","warrior","witchhunter"}
+                     "battlemage","crusader","healer","knight","mage","monk",
+                     "nightblade","pilgrim","rogue","scout","sorcerer","spellsword",
+                     "thief","warrior","witchhunter"}
 
 --Vanilla Data on npc appearances
 spawnConfig.npcInfo = jsonInterface.load("custom/spawnVanillaData/npcInfo.json")
