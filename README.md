@@ -10,10 +10,13 @@ To Install:
 3. In customScripts.lua add the following require statement
 ```
     spawnSystem = require("custom.AdditionalSpawnSystem.spawnSystem")
+    spawnAdmin = require("custom.AdditionalSpawnSystem.spawnAdmin")
 ```
 
 # Configuration
 By default this script won't do anything, it is designed to read json files formatted like in the exampleSpawns.json. In spawnConfig.lua you can define which json files you want to include in your spawn tables, as well as define how you want those spawns to be merged with other configs. Read the comments for the config settings for more details.
+
+spawnAdmin includes some chat commands to add spawn entries on the player's current location, use /slh or /spawnlisthelp in-game for more info
 
 *WARNING* Large numbers of additional spawns will result in reduced performance.
 
