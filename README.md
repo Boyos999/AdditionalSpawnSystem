@@ -28,6 +28,9 @@ spawnAdmin includes some chat commands to add spawn entries on the player's curr
   - Duplicate spawns of generic creature types
 - highSecurity.json
   - Duplicate guard spawns
+- enhancedEncountersMQ.json
+  - WIP, spawn additional npcs in locations related to the Main Quest to make it more suitable to 2-4 player coop
+  - best used with creatureDuplication
 - cliffRacerFly.json
   - For when you're playing with friends who don't know what a cliff racer is
 - deadlyWaters.json
