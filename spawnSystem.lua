@@ -1,6 +1,6 @@
 local spawnSystem = {}
 
-require("custom.spawnSystem.spawnConfig")
+require("custom.AdditionalSpawnSystem.spawnConfig")
 
 local spawnTable = {
     cell = {},

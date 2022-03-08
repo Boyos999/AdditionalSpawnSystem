@@ -9,7 +9,7 @@ local loadedSpawnList = {
     inventoryTemplates = {}
 }
 
-require("custom.spawnSystem.spawnConfig")
+require("custom.AdditionalSpawnSystem.spawnConfig")
 
 function spawnAdmin.getPlayerLocation(pid)
     local cellDescription = tes3mp.GetCell(pid)
