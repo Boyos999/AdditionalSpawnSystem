@@ -29,8 +29,24 @@ function spawnSystem.buildInventory(templateName)
     tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Building inventory from template "..templateName)
 
     for _,items in pairs(templateData) do
-        local itemId = spawnSystem.settingValueParser(items)
-        table.insert(inv, {id = itemId, count = 1})
+        local item = {}
+        --If this entry in the table is a single formatted item
+        if items.id ~= nil then
+            item = items
+        --If this entry is either a string or array of strings/formatted items
+        else
+            item = spawnSystem.settingValueParser(items)
+        end
+        --If the returned item is a formatted item
+        if type(item) == "table" then
+            if item.count == nil then
+                item.count = 1
+            end
+            table.insert(inv, item)
+        --If the returned item is a string
+        elseif type(item) == "string" then
+            table.insert(inv, {id = item, count = 1})
+        end
     end
 
     return inv

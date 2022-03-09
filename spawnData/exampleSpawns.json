@@ -115,7 +115,8 @@
         },
         "completely_random":{
             "aiFight":90,
-            "name":"Random"
+            "name":"Random",
+            "invTemplate":"inv_random"
         },
         "specific_orc":{
             "aiFight":90,
@@ -130,7 +131,8 @@
             "aiFight":90,
             "class":["crusader","healer","knight","mage","sorcerer","spellsword"],
             "level":[10,15,25],
-            "race":"breton"
+            "race":"breton",
+            "invTemplate":"inv_random"
         }
     },
     "creatureTemplates": {
@@ -156,6 +158,10 @@
             ["common_robe_01","common_robe_02","common_robe_03"],
             ["common_shoes_01","common_shoes_02","common_shoes_03"],
             "silver staff"
+        ],
+        "inv_random":[
+            {"id":"common_robe_01","count":1},
+            [{"id":"gold_001","count":100},{"id":"gold_001","count":150},{"id":"gold_001","count":175},{"id":"gold_001","count":200}]
         ]
     }
 }
