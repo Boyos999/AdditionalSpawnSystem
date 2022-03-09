@@ -334,9 +334,98 @@
             "count":1,
             "template":"ee_smuggler_5_a1_2",
             "packetType":"spawn"
-          }]
+          }],
+        "Ilunibi, Soul's Rattle":[
+          {
+            "packetType":"spawn",
+            "count":1,
+            "refId":"ash_ghoul",
+            "location":{
+              "posX":3710,"posY":4208,"posZ":12244,
+              "rotX":0,"rotY":0,"rotZ":0
+            }
+          },
+          {
+            "packetType":"spawn",
+            "count":1,
+            "refId":"ash_ghoul",
+            "location":{
+              "posX":3883,"posY":4484,"posZ":12244,
+              "rotX":0,"rotY":0,"rotZ":0
+            }
+          },
+          {
+            "packetType":"spawn",
+            "count":1,
+            "refId":"ash_ghoul",
+            "location":{
+              "posX":4501,"posY":4660,"posZ":12244,
+              "rotX":0,"rotY":0,"rotZ":0
+            }
+          }
+        ]
     },
-    "refId": {},
+    "refId": {
+      "worm lord":[
+        {
+          "refId":"skeleton archer",
+          "count":2
+        },
+        {
+          "refId":"skeleton champion",
+          "count":2
+        }
+      ],
+      "dreamer":[
+        {
+          "refId":"dreamer",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "dreamer_02":[
+        {
+          "refId":"dreamer_02",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "dreamer_04":[
+        {
+          "refId":"dreamer_04",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "dreamer_05":[
+        {
+          "refId":"dreamer_05",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "dreamer_06":[
+        {
+          "refId":"dreamer_06",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "dreamer_f_01":[
+        {
+          "refId":"dreamer_f_01",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "dreamer_ranged":[
+        {
+          "refId":"dreamer_ranged",
+          "count":1,
+          "useMult":true
+        }
+      ]
+    },
     "uniqueIndex": {},
     "npcTemplates": {
         "ee_smuggler_3_a1_2":{
