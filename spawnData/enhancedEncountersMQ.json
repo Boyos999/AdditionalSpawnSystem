@@ -914,7 +914,7 @@
           "refId":"ash_slave",
           "packetType":"spawn"
         }],
-        "Nerano Ancestral Tomb":[{
+      "Nerano Ancestral Tomb":[{
           "location":{
             "posX":-1371.3928222656,
             "posZ":-701.69128417969,
@@ -939,7 +939,7 @@
           "refId":"skeleton champion",
           "packetType":"spawn"
         }],
-        "Ald Daedroth, Left Wing":[{
+      "Ald Daedroth, Left Wing":[{
           "location":{
             "posX":2446.4438476563,
             "posZ":-31.899972915649,
@@ -1171,7 +1171,7 @@
           "template":"ee_warlock_18_b2",
           "packetType":"spawn"
         }],
-        "Mamaea, Shrine of Pitted Dreams":[{
+      "Mamaea, Shrine of Pitted Dreams":[{
           "location":{
             "posX":5658.544921875,
             "posZ":15128.53515625,
@@ -1901,6 +1901,370 @@
           "count":1,
           "refId":"ascended_sleeper",
           "packetType":"spawn"
+        }],
+      "Dagoth Ur, Outer Facility":[{
+          "location":{
+            "posX":-401.42602539063,
+            "posZ":-575.90002441406,
+            "posY":-249.81660461426,
+            "rotX":0.64726549386978,
+            "rotY":0,
+            "rotZ":2.3875033855438
+          },
+          "count":1,
+          "refId":"ash_ghoul",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":45.566951751709,
+            "posZ":-575.90002441406,
+            "posY":-190.72277832031,
+            "rotX":0.57070297002792,
+            "rotY":0,
+            "rotZ":-2.6234142780304
+          },
+          "count":1,
+          "refId":"ash_ghoul",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-318.69329833984,
+            "posZ":-767.90002441406,
+            "posY":-2015.3294677734,
+            "rotX":0.34726539254189,
+            "rotY":0,
+            "rotZ":0.51523661613464
+          },
+          "count":1,
+          "refId":"ash_ghoul",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-374.97021484375,
+            "posZ":-767.89996337891,
+            "posY":-1707.0982666016,
+            "rotX":0.62148416042328,
+            "rotY":0,
+            "rotZ":0.9761745929718
+          },
+          "count":1,
+          "refId":"ash_ghoul",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":365.21292114258,
+            "posZ":-767.90002441406,
+            "posY":-1304.7899169922,
+            "rotX":0.57343727350235,
+            "rotY":0,
+            "rotZ":-2.7351362705231
+          },
+          "count":1,
+          "refId":"ash_ghoul",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":442.82629394531,
+            "posZ":-767.90002441406,
+            "posY":-2723.7473144531,
+            "rotX":0.3882811665535,
+            "rotY":0,
+            "rotZ":1.3886749744415
+          },
+          "count":1,
+          "refId":"ash_ghoul",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":743.33959960938,
+            "posZ":-767.90002441406,
+            "posY":-2986.2016601563,
+            "rotX":0.60703134536743,
+            "rotY":0,
+            "rotZ":-0.10937023162842
+          },
+          "count":1,
+          "refId":"ash_ghoul",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":401.36569213867,
+            "posZ":-767.90002441406,
+            "posY":-3778.0483398438,
+            "rotX":0.68320274353027,
+            "rotY":0,
+            "rotZ":-1.02889752388
+          },
+          "count":1,
+          "refId":"ash_ghoul",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-212.63726806641,
+            "posZ":-767.90002441406,
+            "posY":-4310.8271484375,
+            "rotX":0.39726519584656,
+            "rotY":0,
+            "rotZ":-0.39178562164307
+          },
+          "count":1,
+          "refId":"ash_zombie",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-362.89880371094,
+            "posZ":-767.90002441406,
+            "posY":-3840.6179199219,
+            "rotX":0.56992143392563,
+            "rotY":0,
+            "rotZ":0.30157399177551
+          },
+          "count":1,
+          "refId":"ash_zombie",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-378.74645996094,
+            "posZ":-767.90008544922,
+            "posY":-3566.3942871094,
+            "rotX":0.56992143392563,
+            "rotY":0,
+            "rotZ":0.30196452140808
+          },
+          "count":1,
+          "refId":"ash_zombie",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-173.59655761719,
+            "posZ":-767.90002441406,
+            "posY":-3509.8984375,
+            "rotX":0.35039010643959,
+            "rotY":0,
+            "rotZ":1.3546984195709
+          },
+          "count":1,
+          "refId":"ash_zombie",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":328.7080078125,
+            "posZ":-1151.9000244141,
+            "posY":-3735.2946777344,
+            "rotX":0.5023432970047,
+            "rotY":0,
+            "rotZ":-0.44256567955017
+          },
+          "count":1,
+          "refId":"ash_zombie",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":238.10043334961,
+            "posZ":-1151.9000244141,
+            "posY":-3547.9147949219,
+            "rotX":0.3824215233326,
+            "rotY":0,
+            "rotZ":-2.7300636768341
+          },
+          "count":1,
+          "refId":"ash_zombie",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-341.86654663086,
+            "posZ":-1151.9000244141,
+            "posY":-4297.287109375,
+            "rotX":0.37265601754189,
+            "rotY":0,
+            "rotZ":-0.17615628242493
+          },
+          "count":1,
+          "refId":"ash_zombie",
+          "packetType":"spawn"
+        }],
+      "Dagoth Ur, Lower Facility":[{
+          "location":{
+            "posX":-257.31735229492,
+            "posZ":192.10000610352,
+            "posY":-2904.1970214844,
+            "rotX":0.55546736717224,
+            "rotY":0,
+            "rotZ":0.56013941764832
+          },
+          "count":1,
+          "refId":"ash_ghoul",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":368.66656494141,
+            "posZ":192.10000610352,
+            "posY":-2850.7416992188,
+            "rotX":0.47499841451645,
+            "rotY":0,
+            "rotZ":-0.71368718147278
+          },
+          "count":1,
+          "refId":"ash_ghoul",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":111.18928527832,
+            "posZ":192.10000610352,
+            "posY":-2862.6088867188,
+            "rotX":0.60663902759552,
+            "rotY":0,
+            "rotZ":-0.030874013900757
+          },
+          "count":1,
+          "refId":"ash_ghoul",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-254.77737426758,
+            "posZ":192.10000610352,
+            "posY":-2652.6098632813,
+            "rotX":0.55038899183273,
+            "rotY":0,
+            "rotZ":0.98162722587585
+          },
+          "count":1,
+          "refId":"ascended_sleeper",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":462.05715942383,
+            "posZ":192.10000610352,
+            "posY":-2611.6005859375,
+            "rotX":0.59374821186066,
+            "rotY":0,
+            "rotZ":-0.9898579120636
+          },
+          "count":1,
+          "refId":"ascended_sleeper",
+          "packetType":"spawn"
+        }],
+      "Dagoth Ur, Inner Facility":[{
+          "location":{
+            "posX":775.82666015625,
+            "posZ":-383.89999389648,
+            "posY":299.98913574219,
+            "rotX":0.4546884894371,
+            "rotY":0,
+            "rotZ":2.1755845546722
+          },
+          "count":1,
+          "refId":"ash_zombie",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":1050.8245849609,
+            "posZ":-383.89999389648,
+            "posY":384.93743896484,
+            "rotX":0.4546884894371,
+            "rotY":0,
+            "rotZ":2.1755845546722
+          },
+          "count":1,
+          "refId":"ash_zombie",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":1327.9296875,
+            "posZ":-383.89999389648,
+            "posY":-138.60446166992,
+            "rotX":0.45703220367432,
+            "rotY":0,
+            "rotZ":-2.6177570819855
+          },
+          "count":1,
+          "refId":"ash_zombie",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":1288.4820556641,
+            "posZ":-383.89999389648,
+            "posY":-366.12545776367,
+            "rotX":0.51250100135803,
+            "rotY":0,
+            "rotZ":-1.331818819046
+          },
+          "count":1,
+          "refId":"ash_ghoul",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":617.66174316406,
+            "posZ":-383.90002441406,
+            "posY":-123.58744049072,
+            "rotX":0.57070410251617,
+            "rotY":0,
+            "rotZ":2.5384743213654
+          },
+          "count":1,
+          "refId":"ascended_sleeper",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":1111.6774902344,
+            "posZ":-383.89999389648,
+            "posY":-2894.2414550781,
+            "rotX":0.4621097445488,
+            "rotY":0,
+            "rotZ":-0.80975747108459
+          },
+          "count":1,
+          "refId":"ash_slave",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":850.50476074219,
+            "posZ":-383.89999389648,
+            "posY":-2996.5446777344,
+            "rotX":0.64843779802322,
+            "rotY":0,
+            "rotZ":0.045320272445679
+          },
+          "count":1,
+          "refId":"ash_slave",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":692.82336425781,
+            "posZ":-383.87097167969,
+            "posY":-2790.4113769531,
+            "rotX":0.51015645265579,
+            "rotY":0,
+            "rotZ":0.98672604560852
+          },
+          "count":1,
+          "refId":"ash_slave",
+          "packetType":"spawn"
+        }],
+      "Dagoth Ur, Inner Tower":[{
+          "location":{
+            "posX":3596.2868652344,
+            "posZ":13828.283203125,
+            "posY":4341.0771484375,
+            "rotX":0.83593654632568,
+            "rotY":0,
+            "rotZ":1.8851368427277
+          },
+          "count":1,
+          "refId":"ascended_sleeper",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":4015.9670410156,
+            "posZ":13824.119140625,
+            "posY":4094.0747070313,
+            "rotX":0.75468683242798,
+            "rotY":0,
+            "rotZ":-0.74845671653748
+          },
+          "count":1,
+          "refId":"ascended_sleeper",
+          "packetType":"spawn"
         }]
     },
     "refId": {
@@ -1962,6 +2326,13 @@
           "count":1,
           "useMult":true
         }
+      ],
+      "dagoth_ur_2":[
+        {
+          "template":"ee_dagoth_c3",
+          "count":5,
+          "useMult":false
+        }
       ]
     },
     "uniqueIndex": {},
@@ -2005,7 +2376,15 @@
           "invTemplate":"ee_cultist_18_b2"
         }
     },
-    "creatureTemplates": {},
+    "creatureTemplates": {
+      "ee_dagoth_c3":{
+        "name":"Dagoth Ur's Mirror Image",
+        "baseId":"dagoth_ur_2",
+        "script":"",
+        "health":250,
+        "magicka":250
+      }
+    },
     "inventoryTemplates": {
         "ee_smuggler_3_a1_2":[
           ["common_shirt_01","common_shirt_02","common_shirt_03","common_shirt_03_c","common_shirt_04","common_shirt_04_a","common_shirt_04_b","common_shirt_04_c","common_shirt_05"],
