@@ -58,6 +58,7 @@ function spawnSystem.buildNpc(templateName)
     local recordStore = RecordStores["npc"]
     local id = recordStore:GenerateRecordId()
     local pid = tableHelper.getAnyValue(Players).pid
+    local textGender
 
     tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Building custom NPC record "..id.." for "..templateName)
 
@@ -65,6 +66,7 @@ function spawnSystem.buildNpc(templateName)
         --If a value on the template is an array pick a random entry
         local selectedValue = spawnSystem.settingValueParser(value)
         if key == "gender" then
+            textGender = selectedValue
             if selectedValue == "male" then
                 recordData[key] = 1
             elseif selectedValue == "female" then
@@ -88,9 +90,9 @@ function spawnSystem.buildNpc(templateName)
                 recordData[setting] = spawnConfig[setting][math.random(1,table.getn(spawnConfig[setting]))]
             elseif setting == "gender" then
                 recordData[setting] = math.random(0,1)
-                tempGender = spawnConfig[setting][recordData[setting]+1]
+                textGender = spawnConfig[setting][recordData[setting]+1]
             elseif setting == "hair" or setting == "head" then
-                local appearanceTable = spawnConfig.npcInfo[recordData.race][tempGender][setting]
+                local appearanceTable = spawnConfig.npcInfo[recordData.race][textGender][setting]
                 recordData[setting] = appearanceTable[math.random(1,table.getn(appearanceTable))]
             end
         end

@@ -1293,9 +1293,9 @@
           ["steel jinkblade","silver flameblade","silver shardblade","silver shortsword","silver sparkblade","silver viperblade"],
           ["expensive_robe_02_a","expensive_robe_03","common_shirt_02","common_shirt_03","common_shirt_04_a","common_shirt_04_c"],
           ["common_pants_01","common_pants_02","common_pants_03","common_pants_03_b","common_pants_03_c","common_pants_04","common_pants_05"],
-          ["netch_leather_boiled_cuirass","netch_leather_cuirass","bonemold_cuirass"],
-          ["netch_leather_greaves","bonemold_greaves","chitin greaves"],
-          ["netch_leather_boots","bonemold_boots","chitin boots"]
+          ["netch_leather_boiled_cuirass","netch_leather_boiled_cuirass","netch_leather_cuirass","netch_leather_cuirass","chitin cuirass"],
+          ["netch_leather_greaves","netch_leather_greaves","chitin greaves"],
+          ["netch_leather_boots","netch_leather_boots","chitin boots"]
         ]
     }
 }
