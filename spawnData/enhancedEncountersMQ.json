@@ -913,6 +913,263 @@
           "count":1,
           "refId":"ash_slave",
           "packetType":"spawn"
+        }],
+        "Nerano Ancestral Tomb":[{
+          "location":{
+            "posX":-1371.3928222656,
+            "posZ":-701.69128417969,
+            "posY":1296.1096191406,
+            "rotX":0.35009288787842,
+            "rotY":0,
+            "rotZ":-1.7894017696381
+          },
+          "count":1,
+          "refId":"skeleton champion",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-1344.9040527344,
+            "posZ":-701.69128417969,
+            "posY":1067.0192871094,
+            "rotX":0.26767081022263,
+            "rotY":0,
+            "rotZ":-1.4288561344147
+          },
+          "count":1,
+          "refId":"skeleton champion",
+          "packetType":"spawn"
+        }],
+        "Ald Daedroth, Left Wing":[{
+          "location":{
+            "posX":2446.4438476563,
+            "posZ":-31.899972915649,
+            "posY":-109.47737884521,
+            "rotX":0.22734373807907,
+            "rotY":0,
+            "rotZ":-1.3128921985626
+          },
+          "count":1,
+          "template":"ee_witch_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":2511.7731933594,
+            "posZ":-31.899963378906,
+            "posY":607.31866455078,
+            "rotX":0.21718746423721,
+            "rotY":0,
+            "rotZ":-1.6851589679718
+          },
+          "count":1,
+          "template":"ee_witch_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":1867.6593017578,
+            "posZ":-31.900003433228,
+            "posY":746.74047851563,
+            "rotX":0.085156202316284,
+            "rotY":0,
+            "rotZ":-2.1679689884186
+          },
+          "count":1,
+          "template":"ee_warlock_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-1987.0262451172,
+            "posZ":-23.612937927246,
+            "posY":-217.69778442383,
+            "rotX":0.11562490463257,
+            "rotY":0,
+            "rotZ":0.47811698913574
+          },
+          "count":1,
+          "template":"ee_warlock_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-1784.0582275391,
+            "posZ":-31.899961471558,
+            "posY":688.05554199219,
+            "rotX":0.32343739271164,
+            "rotY":0,
+            "rotZ":1.9101464748383
+          },
+          "count":1,
+          "template":"ee_warlock_18_b2",
+          "packetType":"spawn"
+        }],
+      "Ald Daedroth, Right Wing":[{
+          "location":{
+            "posX":6617.2592773438,
+            "posZ":-31.900001525879,
+            "posY":3789.7387695313,
+            "rotX":0.11992149800062,
+            "rotY":0,
+            "rotZ":-2.353107213974
+          },
+          "count":1,
+          "template":"ee_warlock_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":7280.7783203125,
+            "posZ":-31.899963378906,
+            "posY":3559.2114257813,
+            "rotX":0.093358926475048,
+            "rotY":0,
+            "rotZ":-1.7863094806671
+          },
+          "count":1,
+          "template":"ee_witch_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":6603.064453125,
+            "posZ":-31.900001525879,
+            "posY":2815.23828125,
+            "rotX":0.22656199336052,
+            "rotY":0,
+            "rotZ":-0.96482396125793
+          },
+          "count":1,
+          "template":"ee_witch_18_b2",
+          "packetType":"spawn"
+        }],
+      "Ald Daedroth, Outer Shrine":[{
+          "location":{
+            "posX":723.58819580078,
+            "posZ":-255.89999389648,
+            "posY":-3230.2900390625,
+            "rotX":0.09335945546627,
+            "rotY":0,
+            "rotZ":-0.22626972198486
+          },
+          "count":1,
+          "template":"ee_warlock_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":1034.6520996094,
+            "posZ":-255.89999389648,
+            "posY":-3009.3845214844,
+            "rotX":0.19375024735928,
+            "rotY":0,
+            "rotZ":-0.46806693077087
+          },
+          "count":1,
+          "template":"ee_warlock_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":1090.8801269531,
+            "posZ":-255.89999389648,
+            "posY":-2728.5244140625,
+            "rotX":0.10078147798777,
+            "rotY":0,
+            "rotZ":-0.74072337150574
+          },
+          "count":1,
+          "template":"ee_witch_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-961.80340576172,
+            "posZ":-255.89999389648,
+            "posY":-2866.3679199219,
+            "rotX":0.1585941016674,
+            "rotY":0,
+            "rotZ":0.33388495445251
+          },
+          "count":1,
+          "template":"ee_witch_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-722.01403808594,
+            "posZ":-255.90000915527,
+            "posY":-2949.5454101563,
+            "rotX":0.1585941016674,
+            "rotY":0,
+            "rotZ":0.33388495445251
+          },
+          "count":1,
+          "template":"ee_witch_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-962.80517578125,
+            "posZ":-255.8999786377,
+            "posY":-3050.6843261719,
+            "rotX":0.27773460745811,
+            "rotY":0,
+            "rotZ":0.34443163871765
+          },
+          "count":1,
+          "template":"ee_warlock_18_b2",
+          "packetType":"spawn"
+        }],
+      "Ald Daedroth, Antechamber":[{
+          "location":{
+            "posX":-1776.3784179688,
+            "posZ":480.10003662109,
+            "posY":198.6985168457,
+            "rotX":0.17890639603138,
+            "rotY":0,
+            "rotZ":1.490606546402
+          },
+          "count":1,
+          "template":"ee_warlock_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-968.99182128906,
+            "posZ":480.10003662109,
+            "posY":235.12899780273,
+            "rotX":0.26250007748604,
+            "rotY":0,
+            "rotZ":-2.6164076328278
+          },
+          "count":1,
+          "template":"ee_warlock_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":-1565.1475830078,
+            "posZ":480.09997558594,
+            "posY":-426.43334960938,
+            "rotX":0.1703125834465,
+            "rotY":0,
+            "rotZ":0.14453196525574
+          },
+          "count":1,
+          "template":"ee_witch_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":55.406394958496,
+            "posZ":224.10003662109,
+            "posY":857.98400878906,
+            "rotX":0.50624990463257,
+            "rotY":0,
+            "rotZ":-2.9855244159698
+          },
+          "count":1,
+          "template":"ee_witch_18_b2",
+          "packetType":"spawn"
+        },{
+          "location":{
+            "posX":156.30815124512,
+            "posZ":225.56439208984,
+            "posY":1034.4045410156,
+            "rotX":0.69687455892563,
+            "rotY":0,
+            "rotZ":-2.8437287807465
+          },
+          "count":1,
+          "template":"ee_warlock_18_b2",
+          "packetType":"spawn"
         }]
     },
     "refId": {
@@ -979,13 +1236,13 @@
     "uniqueIndex": {},
     "npcTemplates": {
         "ee_smuggler_3_a1_2":{
-            "name":"Smuggler",
-            "class":"smuggler",
-            "race":["nord","imperial","breton","redguard"],
-            "level":3,
-            "aiFight":90,
-            "aiFlee":40,
-            "invTemplate":"ee_smuggler_3_a1_2"
+          "name":"Smuggler",
+          "class":"smuggler",
+          "race":["nord","imperial","breton","redguard"],
+          "level":3,
+          "aiFight":90,
+          "aiFlee":40,
+          "invTemplate":"ee_smuggler_3_a1_2"
         },
         "ee_smuggler_5_a1_2":{
             "name":"Smuggler",
@@ -995,22 +1252,50 @@
             "aiFight":90,
             "aiFlee":40,
             "invTemplate":"ee_smuggler_5_a1_2"
+        },
+        "ee_witch_18_b2":{
+          "name":"Cultist",
+          "class":"witch",
+          "race":["dark elf","orc","redguard","breton","wood elf","nord","high elf"],
+          "level":18,
+          "aiFight":90,
+          "aiFlee":40,
+          "gender":"female",
+          "invTemplate":"ee_cultist_18_b2"
+        },
+        "ee_warlock_18_b2":{
+          "name":"Cultist",
+          "class":"warlock",
+          "race":["dark elf","orc","redguard","breton","wood elf","nord","high elf"],
+          "level":18,
+          "aiFight":90,
+          "aiFlee":40,
+          "gender":"male",
+          "invTemplate":"ee_cultist_18_b2"
         }
     },
     "creatureTemplates": {},
     "inventoryTemplates": {
         "ee_smuggler_3_a1_2":[
-            ["common_shirt_01","common_shirt_02","common_shirt_03","common_shirt_03_c","common_shirt_04","common_shirt_04_a","common_shirt_04_b","common_shirt_04_c","common_shirt_05"],
-            ["common_pants_01","common_pants_02","common_pants_03","common_pants_03_b","common_pants_03_c","common_pants_04","common_pants_05"],
-            ["common_shoes_01","common_shoes_02","common_shoes_03","common_shoes_04","common_shoes_05"],
-            ["common_belt_01","common_belt_02","common_belt_03","common_belt_04","common_belt_05","common_amulet_01","common_amulet_02","common_amulet_03","common_ring_01","common_ring_02"],
-            ["iron dagger","iron dagger","silver dagger","steel dagger"]
+          ["common_shirt_01","common_shirt_02","common_shirt_03","common_shirt_03_c","common_shirt_04","common_shirt_04_a","common_shirt_04_b","common_shirt_04_c","common_shirt_05"],
+          ["common_pants_01","common_pants_02","common_pants_03","common_pants_03_b","common_pants_03_c","common_pants_04","common_pants_05"],
+          ["common_shoes_01","common_shoes_02","common_shoes_03","common_shoes_04","common_shoes_05"],
+          ["common_belt_01","common_belt_02","common_belt_03","common_belt_04","common_belt_05","common_amulet_01","common_amulet_02","common_amulet_03","common_ring_01","common_ring_02"],
+          ["iron dagger","iron dagger","silver dagger","steel dagger"]
         ],
         "ee_smuggler_5_a1_2":[
-            ["iron_cuirass","nordic_ringmail_cuirass","bonemold_cuirass","common_shirt_03_c"],
-            ["common_pants_01","common_pants_02","common_pants_03","common_pants_03_b","common_pants_03_c","common_pants_04","common_pants_05"],
-            ["iron_boots","bonemold_boots","common_shoes_03","common_shoes_04","common_shoes_05"],
-            ["iron broadsword","iron longsword","iron saber","steel longsword"]
+          ["iron_cuirass","nordic_ringmail_cuirass","bonemold_cuirass","common_shirt_03_c"],
+          ["common_pants_01","common_pants_02","common_pants_03","common_pants_03_b","common_pants_03_c","common_pants_04","common_pants_05"],
+          ["iron_boots","bonemold_boots","common_shoes_03","common_shoes_04","common_shoes_05"],
+          ["iron broadsword","iron longsword","iron saber","steel longsword"]
+        ],
+        "ee_cultist_18_b2":[
+          ["steel jinkblade","silver flameblade","silver shardblade","silver shortsword","silver sparkblade","silver viperblade"],
+          ["expensive_robe_02_a","expensive_robe_03","common_shirt_02","common_shirt_03","common_shirt_04_a","common_shirt_04_c"],
+          ["common_pants_01","common_pants_02","common_pants_03","common_pants_03_b","common_pants_03_c","common_pants_04","common_pants_05"],
+          ["netch_leather_boiled_cuirass","netch_leather_cuirass","bonemold_cuirass"],
+          ["netch_leather_greaves","bonemold_greaves","chitin greaves"],
+          ["netch_leather_boots","bonemold_boots","chitin boots"]
         ]
     }
 }
