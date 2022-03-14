@@ -291,9 +291,90 @@
         "template":"ee_verethi_bandit_fg_10",
         "packetType":"spawn"
       }
+    ],
+    "Vas, Tower":[{
+      "location":{
+        "posX":5256.4765625,
+        "posZ":13440.130859375,
+        "posY":3885.8208007813,
+        "rotX":0.26874923706055,
+        "rotY":0,
+        "rotZ":0.90341448783875
+      },
+      "count":1,
+      "refId":"skeleton champion",
+      "packetType":"spawn"
+    },{
+      "location":{
+        "posX":5207.74609375,
+        "posZ":13440.122070313,
+        "posY":4521.390625,
+        "rotX":0.22265540063381,
+        "rotY":0,
+        "rotZ":2.4831020832062
+      },
+      "count":1,
+      "refId":"skeleton champion",
+      "packetType":"spawn"
+    },{
+      "location":{
+        "posX":4781.5415039063,
+        "posZ":13440.10546875,
+        "posY":4493.0483398438,
+        "rotX":0.38632729649544,
+        "rotY":0,
+        "rotZ":2.0108354091644
+      },
+      "count":1,
+      "refId":"skeleton archer",
+      "packetType":"spawn"
+    },{
+      "location":{
+        "posX":4778.3520507813,
+        "posZ":13442.342773438,
+        "posY":3897.8310546875,
+        "rotX":0.22499911487103,
+        "rotY":0,
+        "rotZ":1.2413051128387
+      },
+      "count":1,
+      "refId":"skeleton archer",
+      "packetType":"spawn"
+    }]
+  },
+  "refId": {
+    "centurion_sphere_nchur":[
+      {
+        "refId":"centurion_sphere_nchur",
+        "count":1,
+        "useMult":true
+      }
+    ],
+    "centurion_spider_nchur":[
+      {
+        "refId":"centurion_spider_nchur",
+        "count":1,
+        "useMult":true
+      }
+    ],
+    "centurion_steam_nchur":[
+      {
+        "refId":"centurion_steam_nchur",
+        "count":1,
+        "useMult":true
+      }
+    ],
+    "rat_cave_fgt":[
+      {
+        "template":"ee_rat_cave_fg_3",
+        "count":2
+      },
+      {
+        "template":"ee_rat_cave_fg_3",
+        "count":2
+      }
     ]
   },
-  "refId": {},
   "uniqueIndex": {},
   "npcTemplates": {
     "ee_egg_poacher_fg_5":{
