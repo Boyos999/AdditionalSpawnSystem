@@ -28,12 +28,13 @@ spawnAdmin includes some chat commands to add spawn entries on the player's curr
   - Duplicate spawns of generic creature types
 - highSecurity.json
   - Duplicate guard spawns
-- enhancedEncountersMQ.json
-  - Spawn additional npcs in locations related to the Main Quest to make it more suitable to 2-4 player coop
-  - best used with creatureDuplication
-- enhancedEncountersFG.json
-  - WIP, spawn additional npcs in locations related to Fighter's Guild quests
-  - best used with creatureDuplication
+- enhancedEncounters
+  - Spawn additional npcs in locations related to certain questlines to make them more suitable to 2-4 player coop
+  - Note: many locations that were fine with just duplicated generic spawns were left untouched
+  - Intended to be used with creatureDuplication
+  - MQ, Main Quest
+  - FG, Fighter's guild
+  - HR, House Redoran
 - cliffRacerFly.json
   - For when you're playing with friends who don't know what a cliff racer is
 - deadlyWaters.json
@@ -42,7 +43,8 @@ spawnAdmin includes some chat commands to add spawn entries on the player's curr
 # Future planned additions
 1. Per spawnTable spawn multiplier
 2. Better inventory handling (set "count" per item refId)
-3. Some other stuff I probably forgot
+3. Loot lists usable in inventory templates
+4. cellDelete table of unique indexes to delete on cell load
 
 # Known Issues
 1. Spawns on refIds/uniqueIndexes are on a delay, this is because it takes time for the packets with the actor locations to arrive so we know where to spawn them. The delay is configurable via the config, your results may vary
