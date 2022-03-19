@@ -787,7 +787,7 @@
       ["common_pants_01","common_pants_02","common_pants_03","common_pants_03_b","common_pants_03_c","common_pants_04","common_pants_05"],
       ["common_shoes_01","common_shoes_02","common_shoes_03","common_shoes_04","common_shoes_05","netch_leather_boots","netch_leather_boots","netch_leather_boots","netch_leather_boots"],
       ["netch_leather_greaves","netch_leather_cuirass","netch_leather_boiled_cuirass","chitin greaves"],
-      [{"id":"cruel flamestar","count":10},{"id":"cruel shardstar","count":10},{"id":"cruel sparkstar","count":10},{"id":"cruel viperstar","count":10}],
+      [{"id":"cruel flamestar","count":3},{"id":"cruel shardstar","count":3},{"id":"cruel sparkstar","count":3},{"id":"cruel viperstar","count":3}],
       ["iron wakizashi","steel tanto","steel wakizashi","steel shortsword","steel jinkblade","silver shortsword"]
     ],
     "ee_warrior_bandit_fg_11":[
