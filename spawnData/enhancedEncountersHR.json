@@ -277,6 +277,92 @@
         "count":1,
         "template":"ee_andasreth_bandit_hr",
         "packetType":"spawn"
+      }],
+      "Ashalmawia, Shrine, Sunken Vaults":[{
+        "location":{
+          "posX":3631.646484375,
+          "posZ":-2975.2448730469,
+          "posY":3479.2521972656,
+          "rotX":0.20703181624413,
+          "rotY":0,
+          "rotZ":1.5042254924774
+        },
+        "count":1,
+        "refId":"ee_cultist_sorceror_de_18_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":3641.462890625,
+          "posZ":-2975.2451171875,
+          "posY":3819.1948242188,
+          "rotX":0.2203126847744,
+          "rotY":0,
+          "rotZ":1.983523607254
+        },
+        "count":1,
+        "refId":"ee_cultist_sorceror_de_18_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":4706.767578125,
+          "posZ":-3016.5986328125,
+          "posY":3710.2197265625,
+          "rotX":0.12148448079824,
+          "rotY":0,
+          "rotZ":-1.5055372714996
+        },
+        "count":1,
+        "refId":"ee_cultist_battlemage_de_18_hr",
+        "packetType":"spawn"
+      }],
+    "Ashalmawia, Shrine":[{
+        "location":{
+          "posX":-518.70935058594,
+          "posZ":-511.90002441406,
+          "posY":1963.5847167969,
+          "rotX":0.16406275331974,
+          "rotY":0,
+          "rotZ":0.46290063858032
+        },
+        "count":1,
+        "refId":"ee_cultist_battlemage_de_18_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":-11.957721710205,
+          "posZ":-426.08209228516,
+          "posY":2232.3916015625,
+          "rotX":0.70390683412552,
+          "rotY":0,
+          "rotZ":3.0586078166962
+        },
+        "count":1,
+        "refId":"ee_cultist_sorceror_de_18_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":1487.1799316406,
+          "posZ":-767.90002441406,
+          "posY":1521.3283691406,
+          "rotX":0.16132871806622,
+          "rotY":0,
+          "rotZ":-0.51248693466187
+        },
+        "count":1,
+        "refId":"ee_cultist_battlemage_de_18_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":1834.138671875,
+          "posZ":-767.89996337891,
+          "posY":1480.6496582031,
+          "rotX":0.21445393562317,
+          "rotY":0,
+          "rotZ":-1.1589691638947
+        },
+        "count":1,
+        "refId":"ee_cultist_sorceror_de_18_hr",
+        "packetType":"spawn"
       }]
   },
   "refId": {},
@@ -290,6 +376,24 @@
       "name":"Bandit",
       "class":["thief","agent","nightblade"],
       "invTemplate":"ee_andasreth_bandit_hr"
+    },
+    "ee_cultist_sorceror_de_18_hr":{
+      "race":"dark elf",
+      "level":[17,18,19,20],
+      "aiFight":90,
+      "aiFlee":30,
+      "name":"Cultist",
+      "class":"sorcerer",
+      "invTemplate":"ee_sorceror_18_hr"
+    },
+    "ee_cultist_battlemage_de_18_hr":{
+      "race":"dark elf",
+      "level":[17,18,19,20],
+      "aiFight":90,
+      "aiFlee":30,
+      "name":"Cultist",
+      "class":"battlemage",
+      "invTemplate":"ee_battlemage_18_hr"
     }
   },
   "creatureTemplates": {},
@@ -307,6 +411,21 @@
       ["netch_leather_boiled_helm","common_belt_03","common_belt_05"],
       ["iron wakizashi","steel tanto","steel wakizashi","steel shortsword","steel tanto","demon tanto","devil tanto","steel jinkblade","silver shortsword"],
       [{"id":"iron throwing knife","count":10},{"id":"iron throwing knife","count":5},{"id":"steel throwing knife","count":5}]
+    ],
+    "ee_sorceror_18_hr":[
+      ["expensive_robe_02","expensive_robe_02_a","expensive_robe_03","extravagant_robe_01","extravagant_robe_01_t","extravagant_robe_01_c","extravagant_robe_02"],
+      ["expensive_shoes_01","expensive_shoes_02","expensive_shoes_03"],
+      ["steel jinkblade","dire flameblade","dire shardblade","dire sparkblade","dire viperblade","devil tanto","demon tanto"]
+    ],
+    "ee_battlemage_18_hr":[
+      ["expensive_robe_02","expensive_robe_02_a","expensive_robe_03","extravagant_robe_01","extravagant_robe_01_t","extravagant_robe_01_c","extravagant_robe_02"],
+      ["dwemer_boots","steel_boots"],
+      ["steel_greaves","dwemer_greaves","steel_towershield"],
+      ["silver_cuirass","steel_cuirass","dwemer_cuirass"],
+      ["steel_gauntlet_left","steel_pauldron_left","dwemer_bracer_left"],
+      ["steel_gauntlet_right","steel_pauldron_right","dwemer_bracer_right"],
+      ["steel_helm","silver_helm","expensive_amulet_03"],
+      ["steel flameaxe","steel sparkaxe","steel shardaxe","steel viperaxe","silver flameaxe","silver sparkaxe","silver shardaxe","silver viperaxe"]
     ]
   }
 }
