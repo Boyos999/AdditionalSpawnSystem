@@ -654,6 +654,139 @@
         "count":1,
         "template":"ee_mandas_guard_de_15_hr",
         "packetType":"spawn"
+      }],
+      "Shurinbaal":[{
+        "location":{
+          "posX":-463.03234863281,
+          "posZ":-763.720703125,
+          "posY":5316.9272460938,
+          "rotX":0.2007812410593,
+          "rotY":0,
+          "rotZ":-1.7995908260345
+        },
+        "count":1,
+        "template":"ee_shurinbaal_smuggler_13_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":-131.77445983887,
+          "posZ":-765.38659667969,
+          "posY":4899.4467773438,
+          "rotX":0.48398458957672,
+          "rotY":0,
+          "rotZ":-2.3234150409698
+        },
+        "count":1,
+        "template":"ee_shurinbaal_smuggler_13_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":-153.07633972168,
+          "posZ":-1012.1412963867,
+          "posY":3798.2353515625,
+          "rotX":0.3320315182209,
+          "rotY":0,
+          "rotZ":2.0761749744415
+        },
+        "count":1,
+        "template":"ee_shurinbaal_smuggler_13_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":155.46025085449,
+          "posZ":-1024.6146240234,
+          "posY":3590.3427734375,
+          "rotX":0.4992191195488,
+          "rotY":0,
+          "rotZ":-0.21093535423279
+        },
+        "count":1,
+        "template":"ee_shurinbaal_smuggler_13_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":1804.1086425781,
+          "posZ":-1273.5955810547,
+          "posY":3537.3442382813,
+          "rotX":0.39687520265579,
+          "rotY":0,
+          "rotZ":2.7691376209259
+        },
+        "count":1,
+        "template":"ee_shurinbaal_smuggler_13_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":1794.8468017578,
+          "posZ":-1228.814453125,
+          "posY":3725.9504394531,
+          "rotX":0.45195308327675,
+          "rotY":0,
+          "rotZ":-1.8316271305084
+        },
+        "count":1,
+        "template":"ee_shurinbaal_smuggler_13_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":3180.2900390625,
+          "posZ":-1085.029296875,
+          "posY":3864.0317382813,
+          "rotX":0.53593707084656,
+          "rotY":0,
+          "rotZ":-2.5265605449677
+        },
+        "count":1,
+        "template":"ee_shurinbaal_smuggler_13_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":2988.6508789063,
+          "posZ":-1091.4768066406,
+          "posY":3453.6779785156,
+          "rotX":0.46562480926514,
+          "rotY":0,
+          "rotZ":2.600376367569
+        },
+        "count":1,
+        "template":"ee_shurinbaal_smuggler_13_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":1149.8828125,
+          "posZ":-1187.7672119141,
+          "posY":1682.0266113281,
+          "rotX":0.65039050579071,
+          "rotY":0,
+          "rotZ":-3.0640528202057
+        },
+        "count":1,
+        "template":"ee_shurinbaal_smuggler_13_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":1045.7625732422,
+          "posZ":-1187.7409667969,
+          "posY":1879.4384765625,
+          "rotX":0.3890620470047,
+          "rotY":0,
+          "rotZ":1.8472731113434
+        },
+        "count":1,
+        "template":"ee_shurinbaal_smuggler_13_hr",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":552.47509765625,
+          "posZ":-1093.0017089844,
+          "posY":3598.2004394531,
+          "rotX":0.38398393988609,
+          "rotY":0,
+          "rotZ":-1.5202987194061
+        },
+        "count":1,
+        "template":"ee_shurinbaal_smuggler_13_hr",
+        "packetType":"spawn"
       }]
   },
   "refId": {},
@@ -695,6 +828,15 @@
       "class":"knight",
       "script":"mandasGuards",
       "invTemplate":"ee_mandas_guard_18_hr"
+    },
+    "ee_shurinbaal_smuggler_13_hr":{
+      "race":["dark elf","dark elf","dark elf","imperial","redguard"],
+      "level":[11,12,13],
+      "aiFight":90,
+      "aiFlee":30,
+      "name":"Smuggler",
+      "class":["thief","rogue","agent","nightblade"],
+      "invTemplate":"ee_smuggler_13_hr"
     }
   },
   "creatureTemplates": {},
@@ -711,7 +853,15 @@
       ["netch_leather_gauntlet_right","netch_leather_gauntlet_right","netch_leather_gauntlet_right","common_ring_03","common_ring_01","common_ring_02"],
       ["netch_leather_boiled_helm","common_belt_03","common_belt_05"],
       ["iron wakizashi","steel tanto","steel wakizashi","steel shortsword","steel tanto","demon tanto","devil tanto","steel jinkblade","silver shortsword"],
-      [{"id":"iron throwing knife","count":10},{"id":"iron throwing knife","count":5},{"id":"steel throwing knife","count":5}]
+      [{"id":"iron throwing knife","count":3},{"id":"steel throwing knife","count":3}]
+    ],
+    "ee_smuggler_13_hr":[
+      ["common_shirt_01","common_shirt_02","common_shirt_03","common_shirt_03_c","common_shirt_04","common_shirt_05"],
+      ["common_pants_01","common_pants_02","common_pants_03","common_pants_03_b","common_pants_03_c","common_pants_04","common_pants_05"],
+      ["netch_leather_boots","chitin boots"],
+      ["imperial_studded_cuirass","newtscale_cuirass","netch_leather_cuirass","netch_leather_boiled_cuirass","chitin cuirass","netch_leather_cuirass","netch_leather_boiled_cuirass","chitin cuirass"],
+      ["netch_leather_greaves","chitin greaves"],
+      ["iron wakizashi","steel tanto","steel wakizashi","steel dagger","silver dagger","steel shortsword","silver shortsword"]
     ],
     "ee_sorceror_18_hr":[
       ["expensive_robe_02","expensive_robe_02_a","expensive_robe_03","extravagant_robe_01","extravagant_robe_01_t","extravagant_robe_01_c","extravagant_robe_02"],
