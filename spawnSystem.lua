@@ -314,7 +314,8 @@ function spawnSystem.processCell(cellDescription)
 end
 
 function spawnSystem.OnActorList(eventStatus,pid,cellDescription,actors)
-    if eventStatus.validCustomHandlers and eventStatus.validDefaultHandler then
+    --Enter Caius's house seems to cause a nil cellDescription followed by server crash without this check
+    if eventStatus.validCustomHandlers and eventStatus.validDefaultHandler and cellDescription ~= nil then
         if tableHelper.containsValue(pendingCells,cellDescription) then
             --process cell immediately because we don't have to wait for position data
             if spawnTable.cell[cellDescription] ~= nil then
