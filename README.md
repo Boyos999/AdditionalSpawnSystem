@@ -35,10 +35,6 @@ spawnAdmin includes some chat commands to add spawn entries on the player's curr
   - MQ, Main Quest
   - FG, Fighter's guild
   - HR, House Redoran
-- cliffRacerFly.json
-  - For when you're playing with friends who don't know what a cliff racer is
-- deadlyWaters.json
-  - Significant increase in water-based creatures
 
 # Future planned additions
 1. Per spawnTable spawn multiplier
