@@ -296,8 +296,8 @@ function spawnSystem.processCell(cellDescription)
         end
 
         if templateBuilt then
-            RecordStores["npc"]:Save()
-            RecordStores["creature"]:Save()
+            RecordStores["npc"]:QuicksaveToDrive()
+            RecordStores["creature"]:QuicksaveToDrive()
         end
 
         --Place non-actors and spawn actors
