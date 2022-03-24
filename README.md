@@ -35,6 +35,7 @@ spawnAdmin includes some chat commands to add spawn entries on the player's curr
   - MQ, Main Quest
   - FG, Fighter's guild
   - HR, House Redoran
+  - IL, Imperial Legion
 
 # Future planned additions
 1. Per spawnTable spawn multiplier
