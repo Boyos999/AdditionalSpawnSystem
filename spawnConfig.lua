@@ -19,7 +19,10 @@ spawnConfig.actorSpawnOnCellSpawn = false
 
 --Multiplier for # of actors spawned if the entry on the spawn table has useMult = true
 --Can be a decimal value but rounds down to nearest integer, this can result in 0 spawns
-spawnConfig.spawnMult = 1
+--Split into exterior and interior spawn multipliers since high multipliers in exteriors
+--cause significant performance impact
+spawnConfig.extSpawnMult = 1
+spawnConfig.intSpawnMult = 1
 
 --Time in ms between when OnActorList is called and when actor positions are saved
 --for spawns, this is needed because it takes time for position packets to be sent

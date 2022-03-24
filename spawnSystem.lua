@@ -173,7 +173,13 @@ function spawnSystem.spawnAtActors(spawnList,cellDescription)
         objectData.location = spawn.location
 
         if spawn.spawnData.useMult then
-            numSpawns = math.floor(numSpawns*spawnConfig.spawnMult)
+            local spawnMult = 1
+            if LoadedCells[cellDescription].isExterior then
+                spawnMult = spawnConfig.extSpawnMult
+            else
+                spawnMult = spawnConfig.intSpawnMult
+            end
+            numSpawns = math.floor(numSpawns*spawnMult)
         end
 
         if numSpawns >=1 then
