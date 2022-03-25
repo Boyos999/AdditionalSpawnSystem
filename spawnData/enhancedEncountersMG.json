@@ -97,11 +97,95 @@
         "count":1,
         "refId":"ash_ghoul",
         "packetType":"spawn"
+      }],
+    "Mzuleft":[{
+        "location":{
+          "posX":865.97814941406,
+          "posZ":-991.90002441406,
+          "posY":1517.4724121094,
+          "rotX":0.36250039935112,
+          "rotY":0,
+          "rotZ":-0.31364774703979
+        },
+        "count":1,
+        "template":"ee_orc_mzuleft_15_mg",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":-856.59094238281,
+          "posZ":-991.90002441406,
+          "posY":3628.0400390625,
+          "rotX":0.62421888113022,
+          "rotY":0,
+          "rotZ":-1.6589562892914
+        },
+        "count":1,
+        "template":"ee_orc_mzuleft_15_mg",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":-1617.8126220703,
+          "posZ":-991.90002441406,
+          "posY":3606.8403320313,
+          "rotX":0.20742189884186,
+          "rotY":0,
+          "rotZ":1.9215137958527
+        },
+        "count":1,
+        "template":"ee_orc_mzuleft_15_mg",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":-1646.5963134766,
+          "posZ":-607.90002441406,
+          "posY":3914.6320800781,
+          "rotX":0.34414047002792,
+          "rotY":0,
+          "rotZ":0.780513048172
+        },
+        "count":1,
+        "template":"ee_orc_mzuleft_15_mg",
+        "packetType":"spawn"
+      },{
+        "location":{
+          "posX":-903.04168701172,
+          "posZ":-607.90002441406,
+          "posY":3552.5737304688,
+          "rotX":0.48046880960464,
+          "rotY":0,
+          "rotZ":2.446914434433
+        },
+        "count":1,
+        "template":"ee_orc_mzuleft_15_mg",
+        "packetType":"spawn"
       }]
   },
   "refId": {},
   "uniqueIndex": {},
-  "npcTemplates": {},
+  "npcTemplates": {
+    "ee_orc_mzuleft_15_mg":{
+      "name":"Orc Raider",
+      "class":"barbarian",
+      "race":"orc",
+      "level":[14,15,16,17],
+      "aiFight":90,
+      "aiFlee":30,
+      "invTemplate":"ee_orc_mzuleft_15_mg"
+    }
+  },
   "creatureTemplates": {},
-  "inventoryTemplates": {}
+  "inventoryTemplates": {
+    "ee_orc_mzuleft_15_mg":[
+      ["common_pants_03_c","common_pants_02","common_pants_03","common_pants_03_b","common_pants_05"],
+      ["bonemold_cuirass","orcish_cuirass"],
+      ["bonemold_greaves","orcish_greaves"],
+      ["bonemold_boots","orcish_boots"],
+      ["bonemold_helm","orcish_helm"],
+      ["common_belt_02","common_belt_03","bonemold_pauldron_l","orcish_pauldron_left"],
+      ["common_amulet_01","common_amulet_03","bonemold_pauldron_r","orcish_pauldron_right"],
+      ["common_ring_02","common_ring_03","bonemold_bracer_left","orcish_bracer_left"],
+      ["common_ring_04","common_ring_01","bonemold_bracer_right","orcish_bracer_right"],
+      ["orcish battle axe","orcish warhammer"]
+      ]
+  }
 }
