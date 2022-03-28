@@ -336,8 +336,19 @@ function spawnSystem.OnActorList(eventStatus,pid,cellDescription,actors)
 end
 
 function spawnSystemTimerFunc(cellDescription)
-    LoadedCells[cellDescription]:SaveActorPositions()
+    local unloadCell = false
+    if LoadedCells[cellDescription] ~= nil then
+        LoadedCells[cellDescription]:SaveActorPositions()
+    else
+        logicHandler.LoadCell(cellDescription)
+        unloadCell = true
+        tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Loaded cell " .. cellDescription .." because the last player to enter left before spawns could be processed")
+    end
     spawnSystem.processActors(cellDescription)
+    if unloadCell and LoadedCells[cellDescription]:GetVisitorCount() == 0 then
+        logicHandler.UnloadCell(cellDescription)
+        tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Unloaded cell " .. cellDescription .." after spawns were processed")
+    end
 end
 
 function spawnSystem.OnCellLoad(eventStatus,pid,cellDescription)
