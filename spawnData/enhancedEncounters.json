@@ -5591,6 +5591,13 @@
           "template":"ee_rat_cave_fg_3",
           "count":2
         }
+      ],
+      "dremora_lord_khash_uni":[
+        {
+          "template":"ee_khash_uni_image",
+          "count":5,
+          "useMult":false
+        }
       ]
     },
     "uniqueIndex": {},
@@ -5950,13 +5957,19 @@
         "name":"Dagoth Ur's Mirror Image",
         "baseId":"dagoth_ur_2",
         "script":"",
-        "health":250,
-        "magicka":250
+        "health":150,
+        "magicka":150
       },
       "ee_rat_cave_fg_3":{
         "baseId":"rat_cave_fgrh",
         "health":["10","15"],
         "scale":[0.5,0.75,0.9]
+      },
+      "ee_khash_uni_image":{
+        "baseId":"dremora_lord",
+        "name":"Mirror Image",
+        "health":50,
+        "magicka":50
       }
     },
     "inventoryTemplates": {
