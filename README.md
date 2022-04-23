@@ -29,14 +29,9 @@ spawnAdmin includes some chat commands to add spawn entries on the player's curr
 - highSecurity.json
   - Duplicate guard spawns
 - enhancedEncounters
-  - Spawn additional npcs in locations related to certain questlines to make them more suitable to 2-4 player coop
+  - Spawn additional npcs in various to make them more suitable to 2-4 player coop
   - Note: many locations that were fine with just duplicated generic spawns were left untouched
   - Intended to be used with creatureDuplication
-  - MQ, Main Quest
-  - FG, Fighter's guild
-  - HR, House Redoran
-  - IL, Imperial Legion
-  - TT, Tribunal Temple
 
 # Future planned additions
 1. Per spawnTable spawn multiplier
