@@ -26,6 +26,8 @@ spawnAdmin includes some chat commands to add spawn entries on the player's curr
   - These tables are not suited to actually playing the game with
 - creatureDuplication.json
   - Duplicate spawns of generic creature types
+- creatureDuplicationTamrielData.json
+  - Duplicate spawns of generic creatures in Tamriel_data.esm (combined assets for PT & TR)
 - highSecurity.json
   - Duplicate guard spawns
 - enhancedEncounters
