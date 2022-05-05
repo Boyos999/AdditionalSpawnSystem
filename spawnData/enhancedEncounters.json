@@ -5719,6 +5719,41 @@
           "count":5,
           "useMult":false
         }
+      ],
+      "bm_werewolf_maze1":[
+        {
+          "refId":"bm_werewolf_maze1",
+          "count":1,
+          "useMult":false
+        }
+      ],
+      "werewolf_ceremony":[
+        {
+          "refId":"werewolf_ceremony",
+          "count":1,
+          "useMult":false
+        }
+      ],
+      "bm_frysehag_1":[
+        {
+          "refId":"bm_frysehag_1",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "bm_frysehag_2":[
+        {
+          "refId":"bm_frysehag_2",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "bm_frysehag_3":[
+        {
+          "refId":"bm_frysehag_3",
+          "count":1,
+          "useMult":true
+        }
       ]
     },
     "uniqueIndex": {},
