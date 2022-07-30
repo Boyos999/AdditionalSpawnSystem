@@ -2,7 +2,7 @@ spawnConfig = {}
 
 --[[
 Add spawn tables to this list to have their spawn's included
--name: json table file name in data/custom/spawnSystem
+-name: json table file name in data/custom/spawnData
 -mergeType: determines how the objects in the table are merged with previous tables
     0 = Will always overwrite any previous tables' spawns
     1 = Will merge spawns with previous tables' spawns
