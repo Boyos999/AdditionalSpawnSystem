@@ -10,7 +10,9 @@ Add spawn tables to this list to have their spawn's included
 
 ]]
 spawnConfig.spawnTables = {
-    --{ name = "exampleSpawns.json", mergeType = 0 }
+    { name = "creatureDuplication.json", mergeType = 0 },
+    { name = "creatureDuplicationTamrielData.json", mergeType = 0 },
+    { name = "enhancedEncounters.json", mergeType = 0 }
 }
 
 --If set to true the refId & uniqueIndex spawns will also spawn on actors spawned via
@@ -21,8 +23,8 @@ spawnConfig.actorSpawnOnCellSpawn = false
 --Can be a decimal value but rounds down to nearest integer, this can result in 0 spawns
 --Split into exterior and interior spawn multipliers since high multipliers in exteriors
 --cause significant performance impact
-spawnConfig.extSpawnMult = 1
-spawnConfig.intSpawnMult = 1
+spawnConfig.extSpawnMult = 3
+spawnConfig.intSpawnMult = 3
 
 --Time in ms between when OnActorList is called and when actor positions are saved
 --for spawns, this is needed because it takes time for position packets to be sent
