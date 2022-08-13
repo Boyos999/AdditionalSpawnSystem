@@ -19,6 +19,7 @@ local pendingRespawns = {}
 local respawnTimer
 
 function spawnSystemRespawnTimer()
+    tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Respawn Timer checking spawns")
     if trackedSpawns ~= nil then
         for cellDescription,respawns in pairs(trackedSpawns) do
             local spawnIndexes = {}
@@ -65,7 +66,7 @@ function spawnSystemRespawnTimer()
                 spawnSystem.savePendingRespawns()
             else
                 --nothing needs to respawn now
-                tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: No objects need respawning")
+                tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: No objects need respawning in "..cellDescription)
             end
         end
         spawnSystem.saveTrackedRespawns()
