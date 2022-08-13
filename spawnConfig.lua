@@ -73,7 +73,7 @@ Spawn Tables Spec
                 "refId":<string>,                                   --Required if not template
                 "count":<int>,                                      --Required
                 "useMult":<bool>,
-                "respawn":<int>,                                    # of seconds before respawn, if not set respawns on cell reset
+                "respawn":<int>,                                    # of seconds before respawn outside of cell resets
                 "packetType":<spawn|place>,                         --Required
                 "location":{                                        --Required
                     "posX":<number>,"posY":<number>,"posZ":<number>,
