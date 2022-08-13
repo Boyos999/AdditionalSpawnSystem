@@ -13,6 +13,83 @@ local spawnTable = {
 
 local pendingCells = {}
 
+local trackedSpawns = {}
+local pendingRespawns = {}
+
+local respawnTimer
+
+function spawnSystemRespawnTimer()
+    if trackedSpawns ~= nil then
+        for cellDescription,respawns in pairs(trackedSpawns) do
+            local spawnIndexes = {}
+            local objectsToDelete = {}
+            local currentTime = os.time()
+            local unTrackUniqueIndexes = {}
+            for uniqueIndex,respawn in pairs(respawns) do
+                local respawnTime = respawn.timestamp+spawnTable.cell[cellDescription][respawn.spawnIndex].respawn
+                if currentTime >= respawnTime then
+                    if spawnIndexes[respawn.spawnIndex] == nil then
+                        spawnIndexes[respawn.spawnIndex] = 1
+                    else
+                        spawnIndexes[respawn.spawnIndex] = spawnIndexes[respawn.spawnIndex] + 1
+                    end
+                    if spawnConfig.respawnCleanCorpse and respawn.deleted == false then
+                        table.insert(objectsToDelete, uniqueIndex)
+                    end
+                    table.insert(unTrackUniqueIndexes, uniqueIndex)
+                end
+            end
+            if LoadedCells[cellDescription] ~= nil and tableHelper.isEmpty(spawnIndexes) == false then
+                --active respawns
+                tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Objects needing respawn in "..cellDescription.." spawning immediately")
+                for _,uniqueIndex in pairs(objectsToDelete) do
+                    logicHandler.DeleteObjectForEveryone(cellDescription, uniqueIndex)
+                end 
+                spawnSystem.processCell(cellDescription, spawnIndexes)
+                spawnSystem.unTrackSpawns(cellDescription, unTrackUniqueIndexes)
+            elseif tableHelper.isEmpty(spawnIndexes) == false then
+                --Add to pending respawns for this cell
+                tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Objects needing respawn in "..cellDescription.." added to pending respawns")
+                if pendingRespawns[cellDescription] == nil then
+                    pendingRespawns[cellDescription] = {
+                        pendingSpawnIndexes = tableHelper.deepCopy(spawnIndexes),
+                        pendingDeletes = tableHelper.deepCopy(objectsToDelete)
+                    }
+                else
+                    tableHelper.merge(pendingRespawns[cellDescription].pendingSpawnIndexes,spawnIndexes)
+                    tableHelper.merge(pendingRespawns[cellDescription].pendingDeletes,objectsToDelete)
+                end
+                spawnSystem.unTrackSpawns(cellDescription, unTrackUniqueIndexes)
+                spawnSystem.savePendingRespawns()
+            else
+                --nothing needs to respawn now
+                tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: No objects need respawning")
+            end
+        end
+        spawnSystem.saveTrackedRespawns()
+    end
+    tes3mp.RestartTimer(respawnTimer,spawnConfig.globalRespawnInterval*1000)
+end
+
+function spawnSystem.saveTrackedRespawns()
+    jsonInterface.save("custom/trackedRespawns.json",trackedSpawns)
+end
+
+function spawnSystem.savePendingRespawns()
+    jsonInterface.save("custom/pendingRespawns.json",pendingRespawns)
+end
+
+function spawnSystem.unTrackSpawns(cellDescription, unTrackIndexes)
+    local newTrackedSpawns = {}
+    for uniqueIndex,respawn in pairs(trackedSpawns[cellDescription]) do
+        if tableHelper.containsValue(unTrackIndexes, uniqueIndex) then
+        else
+            newTrackedSpawns[uniqueIndex] = respawn
+        end
+    end
+    trackedSpawns[cellDescription] = tableHelper.deepCopy(newTrackedSpawns)
+end
+
 function spawnSystem.settingValueParser(value)
     if type(value) == "table" then
         local rand = math.random(1,table.getn(value))
@@ -261,43 +338,58 @@ function spawnSystem.processActors(cellDescription)
         end
     end
     spawnSystem.spawnAtActors(spawnList,cellDescription)
-    tableHelper.removeValue(pendingCells,cellDescription)
+    pendingCells[cellDescription] = nil
     tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Removed cell " .. cellDescription .." from cells pending spawns")
 end
 
-function spawnSystem.processCell(cellDescription)
+function spawnSystem.processCell(cellDescription, spawnIndexes)
     tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Processing Cell based spawns for "..cellDescription)
-    if pendingCells[cellDescription] == nil then
+    if pendingCells[cellDescription] == nil or spawnIndexes ~= nil then
         local placeObjects = {}
         local spawnObjects = {}
+        local rePlaceObjects = {}
+        local reSpawnObjects = {}
+        local reSpawnIndexes = {}
+        local rePlaceIndexes = {}
         local uniqueIndexes = {}
         local totalPlace = 0
         local totalSpawn = 0
         local templateBuilt = false
 
-        for _,spawn in pairs(spawnTable.cell[cellDescription]) do
-            local object = {}
-            if spawn.packetType == "spawn" then
-                object, templateBuilt = spawnSystem.getSpawnData(spawn)
-                object.location = spawn.location
-                for i=1,spawn.count do
-                    table.insert(spawnObjects,object)
-                    totalSpawn = totalSpawn + 1
+        for spawnIndex,spawn in pairs(spawnTable.cell[cellDescription]) do
+            if spawnIndexes == nil or spawnIndexes[spawnIndex] ~= nil then
+                local object = {}
+                if spawn.packetType == "spawn" then
+                    object, templateBuilt = spawnSystem.getSpawnData(spawn)
+                    object.location = spawn.location
+                    local spawnCount = spawn.count
+                    if spawnIndexes ~= nil and spawnIndexes[spawnIndex] ~= nil then
+                        spawnCount = spawnIndexes[spawnIndex]
+                    end
+                    for i=1,spawnCount do
+                        if spawn.respawn ~= nil then
+                            table.insert(reSpawnObjects,object)
+                            table.insert(reSpawnIndexes,spawnIndex)
+                        else
+                            table.insert(spawnObjects,object)
+                        end
+                        totalSpawn = totalSpawn + 1
+                    end
+                elseif spawn.packetType == "place" then
+                    object.refId = spawn.refId
+                    object.location = spawn.location
+                    object.count = spawn.count
+                    object.charge = -1
+                    object.enchantmentCharge = -1
+                    object.soul = ""
+                    if spawn.respawn ~= nil then
+                        table.insert(rePlaceObjects,object)
+                        table.insert(rePlaceIndexes,spawnIndex)
+                    else
+                        table.insert(placeObjects,object)
+                    end
+                    totalPlace = totalPlace + 1
                 end
-            elseif spawn.packetType == "place" then
-                object.refId = spawn.refId
-                object.location = spawn.location
-                object.count = spawn.count
-                object.charge = -1
-                object.enchantmentCharge = -1
-                object.soul = -1
-                if spawn.scale ~= nil then
-                    object.scale = spawn.scale
-                else
-                    object.scale = 1
-                end
-                table.insert(placeObjects,object)
-                totalPlace = totalPlace + 1
             end
         end
 
@@ -309,6 +401,35 @@ function spawnSystem.processCell(cellDescription)
         --Place non-actors and spawn actors
         uniqueIndexes = logicHandler.CreateObjects(cellDescription,placeObjects,"place")
         tableHelper.merge(uniqueIndexes,logicHandler.CreateObjects(cellDescription,spawnObjects,"spawn"),true)
+
+        --Respawning objects need to be tracked separately
+        uniqueRePlaceIndexes = logicHandler.CreateObjects(cellDescription,rePlaceObjects,"place")
+        uniqueReSpawnIndexes = logicHandler.CreateObjects(cellDescription,reSpawnObjects,"spawn")
+        local currentTime = os.time()
+        for i,spawnIndex in pairs(reSpawnIndexes) do
+            trackedSpawns[cellDescription][uniqueReSpawnIndexes[i]] = {
+                spawnIndex = spawnIndex,
+                timestamp = currentTime,
+                needsRespawn = false,
+                deleted = false
+            }  
+            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Added "..uniqueReSpawnIndexes[i].." to "..cellDescription.." pending respawn for spawnIndex: "..spawnIndex)
+        end
+        for i,spawnIndex in pairs(rePlaceIndexes) do
+            trackedSpawns[cellDescription][uniqueRePlaceIndexes[i]] = {
+                spawnIndex = spawnIndex,
+                timestamp = currentTime,
+                needsRespawn = false
+            }
+            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Added "..uniqueRePlaceIndexes[i].." to "..cellDescription.." pending respawn for spawnIndex: "..spawnIndex)
+        end
+
+        if tableHelper.isEmpty(trackedSpawns[cellDescription]) == false then
+            spawnSystem.saveTrackedRespawns()
+        end
+
+        tableHelper.merge(uniqueIndexes, uniqueRePlaceIndexes, true)
+        tableHelper.merge(uniqueIndexes, uniqueReSpawnIndexes, true)
 
         tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Placed "..totalPlace.." objects and spawned "..totalSpawn.." actors for "..cellDescription)
 
@@ -355,8 +476,15 @@ function spawnSystem.OnCellLoad(eventStatus,pid,cellDescription)
     if eventStatus.validCustomHandlers and eventStatus.validDefaultHandler then
         --If this cell has not been initialized or has been reset add it to the list of cells that need spawns
         if LoadedCells[cellDescription].data.loadState.hasFullActorList ~= true then
+            trackedSpawns[cellDescription] = {}
             table.insert(pendingCells,cellDescription)
             tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Added cell " .. cellDescription .." to cells pending spawns")
+        elseif pendingRespawns[cellDescription] ~= nil then
+            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Processing queued respawns for ".. cellDescription)
+            for _,uniqueIndex in pairs(pendingRespawns[cellDescription].pendingDeletes) do
+                logicHandler.DeleteObjectForEveryone(cellDescription, uniqueIndex)
+            end 
+            spawnSystem.processCell(cellDescription,pendingRespawns[cellDescription].pendingSpawnIndexes)
         end
     end
 end
@@ -400,10 +528,58 @@ function spawnSystem.init()
     math.random()
     math.random()
     math.random()
+    trackedSpawns = jsonInterface.load("custom/trackedRespawns.json")
+    if trackedSpawns == nil then
+        trackedSpawns = {}
+    end
+    pendingRespawns = jsonInterface.load("custom/pendingRespawns.json")
+    if pendingRespawns == nil then
+        pendingRespawns = {}
+    end
+    respawnTimer = tes3mp.CreateTimer("spawnSystemRespawnTimer",spawnConfig.globalRespawnInterval*1000)
+    tes3mp.StartTimer(respawnTimer)
+end
+
+function spawnSystem.OnActorDeath(eventStatus,pid,cellDescription,actors)
+    if eventStatus.validCustomHandlers and eventStatus.validDefaultHandler then
+        if trackedSpawns[cellDescription] ~= nil then
+            if tableHelper.isEmpty(trackedSpawns[cellDescription]) == false then
+                for uniqueIndex,actor in pairs(actors) do
+                    if trackedSpawns[cellDescription][uniqueIndex] ~= nil then
+                        trackedSpawns[cellDescription][uniqueIndex].needsRespawn = true
+                        tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: "..uniqueIndex.." ("..actor.refId..") died and is marked for respawn")
+                    end
+                end
+            end
+        end
+    end
+end
+
+function spawnSystem.OnObjectDelete(eventStatus,pid, cellDescription, objects, targetPlayers)
+    if eventStatus.validCustomHandlers and eventStatus.validDefaultHandler then
+        if trackedSpawns[cellDescription] ~= nil then
+            if tableHelper.isEmpty(trackedSpawns[cellDescription]) == false then
+                for uniqueIndex, object in pairs(objects) do
+                    if trackedSpawns[cellDescription][uniqueIndex] ~= nil then
+                        if trackedSpawns[cellDescription][uniqueIndex].needsRespawn == true then
+                            --This is probably a corpse
+                            trackedSpawns[cellDescription][uniqueIndex].deleted = true
+                            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: "..uniqueIndex.." ("..object.refId..") corpse was deleted and is marked as deleted")
+                        else
+                            trackedSpawns[cellDescription][uniqueIndex].needsRespawn = true
+                            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: "..uniqueIndex.." ("..object.refId..") was deleted and is marked for respawn")
+                        end
+                    end
+                end
+            end
+        end
+    end
 end
 
 customEventHooks.registerHandler("OnCellLoad",spawnSystem.OnCellLoad)
 customEventHooks.registerHandler("OnActorList",spawnSystem.OnActorList)
 customEventHooks.registerHandler("OnServerPostInit",spawnSystem.init)
+customEventHooks.registerHandler("OnActorDeath",spawnSystem.OnActorDeath)
+customEventHooks.registerHandler("OnObjectDelete",spawnSystem.OnObjectDelete)
 
 return spawnSystem

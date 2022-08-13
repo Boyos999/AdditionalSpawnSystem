@@ -1,0 +1,22 @@
+{
+    "cell": {
+        "Seyda Neen, Arrille's Tradehouse":[
+            {
+                "refId":"mudcrab",
+                "count":1,
+                "useMult":false,
+                "respawn":30,
+                "packetType":"spawn",
+                "location":{
+                    "posX":-147.808,"posY":-281.307,"posZ":165,
+                    "rotX":0,"rotY":0,"rotZ":0
+                }
+            }
+        ]
+    },
+    "refId": {},
+    "uniqueIndex": {},
+    "npcTemplates": {},
+    "creatureTemplates": {},
+    "inventoryTemplates": {}
+  }

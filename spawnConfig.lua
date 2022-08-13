@@ -12,8 +12,16 @@ Add spawn tables to this list to have their spawn's included
 spawnConfig.spawnTables = {
     { name = "creatureDuplication.json", mergeType = 0 },
     { name = "creatureDuplicationTamrielData.json", mergeType = 0 },
-    { name = "enhancedEncounters.json", mergeType = 0 }
+    { name = "enhancedEncounters.json", mergeType = 0 },
+    { name = "exampleRespawns.json", mergeType = 0 }
 }
+
+
+--Interval by which any spawns with "respawn" set are checked
+spawnConfig.globalRespawnInterval = 30
+
+--Whether to delete corpses when respawning actors
+spawnConfig.respawnCleanCorpse = true
 
 --If set to true the refId & uniqueIndex spawns will also spawn on actors spawned via
 --the cell spawn list.
@@ -66,6 +74,7 @@ Spawn Tables Spec
                 "refId":<string>,                                   --Required if not template
                 "count":<int>,                                      --Required
                 "useMult":<bool>,
+                "respawn":<int>,                                    # of seconds before respawn, if not set respawns on cell reset
                 "packetType":<spawn|place>,                         --Required
                 "location":{                                        --Required
                     "posX":<number>,"posY":<number>,"posZ":<number>,
