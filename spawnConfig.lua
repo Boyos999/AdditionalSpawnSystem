@@ -12,13 +12,12 @@ Add spawn tables to this list to have their spawn's included
 spawnConfig.spawnTables = {
     { name = "creatureDuplication.json", mergeType = 0 },
     { name = "creatureDuplicationTamrielData.json", mergeType = 0 },
-    { name = "enhancedEncounters.json", mergeType = 0 },
-    { name = "exampleRespawns.json", mergeType = 0 }
+    { name = "enhancedEncounters.json", mergeType = 0 }
 }
 
 
 --Interval by which any spawns with "respawn" set are checked
-spawnConfig.globalRespawnInterval = 30
+spawnConfig.globalRespawnInterval = 60
 
 --Whether to delete corpses when respawning actors
 spawnConfig.respawnCleanCorpse = true

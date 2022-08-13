@@ -14,11 +14,14 @@ To Install:
 ```
 
 # Configuration
-By default this script won't do anything, it is designed to read json files formatted like in the exampleSpawns.json. In spawnConfig.lua you can define which json files you want to include in your spawn tables, as well as define how you want those spawns to be merged with other configs. Read the comments for the config settings for more details.
+This script is designed to read json files formatted like in the exampleSpawns.json. In spawnConfig.lua you can define which json files you want to include in your spawn tables, as well as define how you want those spawns to be merged with other configs. Read the comments for the config settings for more details. By default creature duplication and enhanced encounters are enabled
 
 spawnAdmin includes some chat commands to add spawn entries on the player's current location, use /slh or /spawnlisthelp in-game for more info
 
 *WARNING* Large numbers of additional spawns will result in reduced performance.
+
+# Respawning actors/objects
+If you set a value for "respawn" in one of the spawndata jsons those spawns will be respawned outside of cell resets on the given interval, this can only be set on spawns in the "cell" table. The `spawnConfig.globalRespawnInterval` setting in spawnConfig.lua sets the interval in seconds by which respawns are checked. See `exampleRespawns.json` for examples of how to use this
 
 # Included Spawn Tables
 - example\*.json

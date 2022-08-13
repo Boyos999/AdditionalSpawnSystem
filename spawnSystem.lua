@@ -314,7 +314,7 @@ function spawnSystem.processActors(cellDescription)
         
         --Skip actors placed via cell spawns
         if pendingCells[cellDescription] ~= nil and tableHelper.containsValue(pendingCells[cellDescription],uniqueIndex) and spawnConfig.actorSpawnOnCellSpawn == false then
-            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Skipped Actor with uniqueIndex " ..uniqueIndex.." because they were spawned by the cell spawn list for "..cellDescription)
+            tes3mp.LogMessage(enumerations.log.VERBOSE,"SpawnSystem: Skipped Actor with uniqueIndex " ..uniqueIndex.." because they were spawned by the cell spawn list for "..cellDescription)
         else
             local actor = cellData.objectData[uniqueIndex]
 
@@ -323,14 +323,14 @@ function spawnSystem.processActors(cellDescription)
                     for _,spawn in pairs(spawnTable.uniqueIndex[uniqueIndex]) do
                         table.insert(spawnList,{spawnData = spawn, location = actor.location })
                     end
-                    tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Actor matched by Unique Index: "..uniqueIndex.."|"..actor.refId.."|"..actor.location.posX.."|"..actor.location.posY.."|"..actor.location.posZ)
+                    tes3mp.LogMessage(enumerations.log.VERBOSE,"SpawnSystem: Actor matched by Unique Index: "..uniqueIndex.."|"..actor.refId.."|"..actor.location.posX.."|"..actor.location.posY.."|"..actor.location.posZ)
                 end
 
                 if spawnTable.refId[actor.refId] ~= nil then
                     for _,spawn in pairs(spawnTable.refId[actor.refId]) do
                         table.insert(spawnList,{spawnData = spawn, location = actor.location})
                     end
-                    tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Actor matched by RefId: "..uniqueIndex.."|"..actor.refId.."|"..actor.location.posX.."|"..actor.location.posY.."|"..actor.location.posZ)
+                    tes3mp.LogMessage(enumerations.log.VERBOSE,"SpawnSystem: Actor matched by RefId: "..uniqueIndex.."|"..actor.refId.."|"..actor.location.posX.."|"..actor.location.posY.."|"..actor.location.posZ)
                 end
             else
                 tes3mp.LogMessage(enumerations.log.WARN,"SpawnSystem: Actor Location not found for "..uniqueIndex.."|"..actor.refId)
@@ -413,7 +413,7 @@ function spawnSystem.processCell(cellDescription, spawnIndexes)
                 needsRespawn = false,
                 deleted = false
             }  
-            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Added "..uniqueReSpawnIndexes[i].." to "..cellDescription.." pending respawn for spawnIndex: "..spawnIndex)
+            tes3mp.LogMessage(enumerations.log.VERBOSE,"SpawnSystem: Added "..uniqueReSpawnIndexes[i].." to "..cellDescription.." pending respawn for spawnIndex: "..spawnIndex)
         end
         for i,spawnIndex in pairs(rePlaceIndexes) do
             trackedSpawns[cellDescription][uniqueRePlaceIndexes[i]] = {
@@ -421,7 +421,7 @@ function spawnSystem.processCell(cellDescription, spawnIndexes)
                 timestamp = currentTime,
                 needsRespawn = false
             }
-            tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Added "..uniqueRePlaceIndexes[i].." to "..cellDescription.." pending respawn for spawnIndex: "..spawnIndex)
+            tes3mp.LogMessage(enumerations.log.VERBOSE,"SpawnSystem: Added "..uniqueRePlaceIndexes[i].." to "..cellDescription.." pending respawn for spawnIndex: "..spawnIndex)
         end
 
         if tableHelper.isEmpty(trackedSpawns[cellDescription]) == false then
@@ -486,6 +486,7 @@ function spawnSystem.OnCellLoad(eventStatus,pid,cellDescription)
             end 
             spawnSystem.processCell(cellDescription,pendingRespawns[cellDescription].pendingSpawnIndexes)
             pendingRespawns[cellDescription] = nil
+            spawnSystem.savePendingRespawns()
         end
     end
 end
