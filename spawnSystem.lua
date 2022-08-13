@@ -28,7 +28,7 @@ function spawnSystemRespawnTimer()
             local spawnCount = 0
             for uniqueIndex,respawn in pairs(respawns) do
                 local respawnTime = respawn.timestamp+spawnTable.cell[cellDescription][respawn.spawnIndex].respawn
-                if currentTime >= respawnTime then
+                if currentTime >= respawnTime and respawn.needsRespawn then
                     if spawnIndexes[respawn.spawnIndex] == nil then
                         spawnIndexes[respawn.spawnIndex] = 1
                     else
