@@ -481,6 +481,8 @@ function spawnSystem.OnCellLoad(eventStatus,pid,cellDescription)
             trackedSpawns[cellDescription] = {}
             table.insert(pendingCells,cellDescription)
             tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Added cell " .. cellDescription .." to cells pending spawns")
+            pendingRespawns[cellDescription] = nil
+            spawnSystem.savePendingRespawns()
         elseif pendingRespawns[cellDescription] ~= nil then
             tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Processing queued respawns for ".. cellDescription)
             for _,uniqueIndex in pairs(pendingRespawns[cellDescription].pendingDeletes) do

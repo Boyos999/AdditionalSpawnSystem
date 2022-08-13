@@ -23,6 +23,8 @@ spawnAdmin includes some chat commands to add spawn entries on the player's curr
 # Respawning actors/objects
 If you set a value for "respawn" in one of the spawndata jsons those spawns will be respawned outside of cell resets on the given interval, this can only be set on spawns in the "cell" table. The `spawnConfig.globalRespawnInterval` setting in spawnConfig.lua sets the interval in seconds by which respawns are checked. See `exampleRespawns.json` for examples of how to use this
 
+*WARNING* Changing spawnlists that use respawns without resetting cells can potentially cause issues
+
 # Included Spawn Tables
 - example\*.json
   - Everything in these tables is designed to be seen in seyda neen, for testing/showcasing
