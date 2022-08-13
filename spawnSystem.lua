@@ -485,6 +485,7 @@ function spawnSystem.OnCellLoad(eventStatus,pid,cellDescription)
                 logicHandler.DeleteObjectForEveryone(cellDescription, uniqueIndex)
             end 
             spawnSystem.processCell(cellDescription,pendingRespawns[cellDescription].pendingSpawnIndexes)
+            pendingRespawns[cellDescription] = nil
         end
     end
 end
