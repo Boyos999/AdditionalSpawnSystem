@@ -426,10 +426,6 @@ function spawnSystem.processCell(cellDescription, spawnIndexes)
             tes3mp.LogMessage(enumerations.log.VERBOSE,"SpawnSystem: Added "..uniqueRePlaceIndexes[i].." to "..cellDescription.." pending respawn for spawnIndex: "..spawnIndex)
         end
 
-        if tableHelper.isEmpty(trackedSpawns[cellDescription]) == false then
-            spawnSystem.saveTrackedRespawns()
-        end
-
         tableHelper.merge(uniqueIndexes, uniqueRePlaceIndexes, true)
         tableHelper.merge(uniqueIndexes, uniqueReSpawnIndexes, true)
 
@@ -482,7 +478,6 @@ function spawnSystem.OnCellLoad(eventStatus,pid,cellDescription)
             table.insert(pendingCells,cellDescription)
             tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Added cell " .. cellDescription .." to cells pending spawns")
             pendingRespawns[cellDescription] = nil
-            spawnSystem.savePendingRespawns()
         elseif pendingRespawns[cellDescription] ~= nil then
             tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Processing queued respawns for ".. cellDescription)
             for _,uniqueIndex in pairs(pendingRespawns[cellDescription].pendingDeletes) do
@@ -490,7 +485,6 @@ function spawnSystem.OnCellLoad(eventStatus,pid,cellDescription)
             end 
             spawnSystem.processCell(cellDescription,pendingRespawns[cellDescription].pendingSpawnIndexes)
             pendingRespawns[cellDescription] = nil
-            spawnSystem.savePendingRespawns()
         end
     end
 end
