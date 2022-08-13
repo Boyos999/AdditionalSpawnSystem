@@ -25,6 +25,7 @@ function spawnSystemRespawnTimer()
             local objectsToDelete = {}
             local currentTime = os.time()
             local unTrackUniqueIndexes = {}
+            local spawnCount = 0
             for uniqueIndex,respawn in pairs(respawns) do
                 local respawnTime = respawn.timestamp+spawnTable.cell[cellDescription][respawn.spawnIndex].respawn
                 if currentTime >= respawnTime then
@@ -37,11 +38,12 @@ function spawnSystemRespawnTimer()
                         table.insert(objectsToDelete, uniqueIndex)
                     end
                     table.insert(unTrackUniqueIndexes, uniqueIndex)
+                    spawnCount = spawnCount + 1
                 end
             end
             if LoadedCells[cellDescription] ~= nil and tableHelper.isEmpty(spawnIndexes) == false then
                 --active respawns
-                tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Objects needing respawn in "..cellDescription.." spawning immediately")
+                tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: "..spawnCount.." Objects needing respawn in "..cellDescription.." spawning immediately")
                 for _,uniqueIndex in pairs(objectsToDelete) do
                     logicHandler.DeleteObjectForEveryone(cellDescription, uniqueIndex)
                 end 
@@ -49,7 +51,7 @@ function spawnSystemRespawnTimer()
                 spawnSystem.unTrackSpawns(cellDescription, unTrackUniqueIndexes)
             elseif tableHelper.isEmpty(spawnIndexes) == false then
                 --Add to pending respawns for this cell
-                tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Objects needing respawn in "..cellDescription.." added to pending respawns")
+                tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: "..spawnCount.." Objects needing respawn in "..cellDescription.." added to pending respawns")
                 if pendingRespawns[cellDescription] == nil then
                     pendingRespawns[cellDescription] = {
                         pendingSpawnIndexes = tableHelper.deepCopy(spawnIndexes),
@@ -578,10 +580,19 @@ function spawnSystem.OnObjectDelete(eventStatus,pid, cellDescription, objects, t
     end
 end
 
+function spawnSystem.OnPlayerDisconnect(eventStatus,pid)
+    if tableHelper.isEmpty(Players) then
+        spawnSystem.saveTrackedRespawns()
+        spawnSystem.savePendingRespawns()
+        tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Saved respawn tracking since the last player left the server")
+    end
+end
+
 customEventHooks.registerHandler("OnCellLoad",spawnSystem.OnCellLoad)
 customEventHooks.registerHandler("OnActorList",spawnSystem.OnActorList)
 customEventHooks.registerHandler("OnServerPostInit",spawnSystem.init)
 customEventHooks.registerHandler("OnActorDeath",spawnSystem.OnActorDeath)
 customEventHooks.registerHandler("OnObjectDelete",spawnSystem.OnObjectDelete)
+customEventHooks.registerHandler("OnPlayerDisconnect",spawnSystem.OnPlayerDisconnect)
 
 return spawnSystem
