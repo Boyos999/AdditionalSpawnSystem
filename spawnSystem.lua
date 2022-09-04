@@ -402,12 +402,22 @@ function spawnSystem.processCell(cellDescription, spawnIndexes)
         end
 
         --Place non-actors and spawn actors
-        uniqueIndexes = logicHandler.CreateObjects(cellDescription,placeObjects,"place")
-        tableHelper.merge(uniqueIndexes,logicHandler.CreateObjects(cellDescription,spawnObjects,"spawn"),true)
+        if not tableHelper.isEmpty(placeObjects) then
+            uniqueIndexes = logicHandler.CreateObjects(cellDescription,placeObjects,"place")
+        end
+        if not tableHelper.isEmpty(spawnObjects) then
+            tableHelper.merge(uniqueIndexes,logicHandler.CreateObjects(cellDescription,spawnObjects,"spawn"),true)
+        end
 
         --Respawning objects need to be tracked separately
-        uniqueRePlaceIndexes = logicHandler.CreateObjects(cellDescription,rePlaceObjects,"place")
-        uniqueReSpawnIndexes = logicHandler.CreateObjects(cellDescription,reSpawnObjects,"spawn")
+        if not tableHelper.isEmpty(rePlaceObjects) then
+            uniqueRePlaceIndexes = logicHandler.CreateObjects(cellDescription,rePlaceObjects,"place")
+            tableHelper.merge(uniqueIndexes, uniqueRePlaceIndexes, true)
+        end
+        if not tableHelper.isEmpty(reSpawnObjects) then
+            uniqueReSpawnIndexes = logicHandler.CreateObjects(cellDescription,reSpawnObjects,"spawn")
+            tableHelper.merge(uniqueIndexes, uniqueReSpawnIndexes, true)
+        end
         local currentTime = os.time()
         for i,spawnIndex in pairs(reSpawnIndexes) do
             trackedSpawns[cellDescription][uniqueReSpawnIndexes[i]] = {
@@ -426,9 +436,6 @@ function spawnSystem.processCell(cellDescription, spawnIndexes)
             }
             tes3mp.LogMessage(enumerations.log.VERBOSE,"SpawnSystem: Added "..uniqueRePlaceIndexes[i].." to "..cellDescription.." pending respawn for spawnIndex: "..spawnIndex)
         end
-
-        tableHelper.merge(uniqueIndexes, uniqueRePlaceIndexes, true)
-        tableHelper.merge(uniqueIndexes, uniqueReSpawnIndexes, true)
 
         tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Placed "..totalPlace.." objects and spawned "..totalSpawn.." actors for "..cellDescription)
 
