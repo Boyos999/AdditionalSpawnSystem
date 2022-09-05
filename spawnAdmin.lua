@@ -1,6 +1,7 @@
 local spawnAdmin = {}
 
 local loadedSpawnList = {
+    deleteIndexByCell = {},
     cell = {},
     refId = {},
     uniqueIndex = {},
