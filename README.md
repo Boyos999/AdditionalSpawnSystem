@@ -42,7 +42,6 @@ If you set a value for "respawn" in one of the spawndata jsons those spawns will
 
 # Future planned additions
 1. Per spawnTable spawn multiplier
-2. Better inventory handling (set "count" per item refId)
 3. Loot lists usable in inventory templates
 
 # Known Issues
