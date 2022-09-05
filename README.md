@@ -44,7 +44,6 @@ If you set a value for "respawn" in one of the spawndata jsons those spawns will
 1. Per spawnTable spawn multiplier
 2. Better inventory handling (set "count" per item refId)
 3. Loot lists usable in inventory templates
-4. cellDelete table of unique indexes to delete on cell load
 
 # Known Issues
 1. Spawns on refIds/uniqueIndexes are on a delay, this is because it takes time for the packets with the actor locations to arrive so we know where to spawn them. The delay is configurable via the config, your results may vary

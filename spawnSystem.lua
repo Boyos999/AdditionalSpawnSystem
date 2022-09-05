@@ -3,6 +3,7 @@ local spawnSystem = {}
 require("custom.AdditionalSpawnSystem.spawnConfig")
 
 local spawnTable = {
+    deleteIndexByCell = {},
     cell = {},
     refId = {},
     uniqueIndex = {},
@@ -446,12 +447,23 @@ function spawnSystem.processCell(cellDescription, spawnIndexes)
     end
 end
 
+function spawnSystem.processDeletes(cellDescription)
+    tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Processing unique indexes to delete for "..cellDescription)
+    local deleteCount = 0
+    for _,uniqueIndex in pairs(spawnTable.deleteIndexByCell[cellDescription]) do
+        logicHandler.DeleteObjectForEveryone(cellDescription,uniqueIndex)
+        deleteCount = deleteCount + 1
+    end
+    tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Deleted "..deleteCount.." indexes from "..cellDescription)
+end
+
 function spawnSystem.OnActorList(eventStatus,pid,cellDescription,actors)
     --Enter Caius's house seems to cause a nil cellDescription followed by server crash without this check
     if eventStatus.validCustomHandlers and eventStatus.validDefaultHandler and cellDescription ~= nil then
         if tableHelper.containsValue(pendingCells,cellDescription) then
             --process cell immediately because we don't have to wait for position data
             if spawnTable.cell[cellDescription] ~= nil then
+                spawnSystem.processDeletes(cellDescription)
                 spawnSystem.processCell(cellDescription)
             end
 
