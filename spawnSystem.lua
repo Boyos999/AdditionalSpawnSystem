@@ -462,8 +462,10 @@ function spawnSystem.OnActorList(eventStatus,pid,cellDescription,actors)
     if eventStatus.validCustomHandlers and eventStatus.validDefaultHandler and cellDescription ~= nil then
         if tableHelper.containsValue(pendingCells,cellDescription) then
             --process cell immediately because we don't have to wait for position data
-            if spawnTable.cell[cellDescription] ~= nil then
+            if spawnTable.deleteIndexByCell[cellDescription] ~= nil then
                 spawnSystem.processDeletes(cellDescription)
+            end
+            if spawnTable.cell[cellDescription] ~= nil then
                 spawnSystem.processCell(cellDescription)
             end
 
