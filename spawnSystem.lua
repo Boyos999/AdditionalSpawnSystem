@@ -496,7 +496,7 @@ function spawnSystem.OnCellLoad(eventStatus,pid,cellDescription)
     if eventStatus.validCustomHandlers and eventStatus.validDefaultHandler then
         --If this cell has not been initialized or has been reset add it to the list of cells that need spawns
         if LoadedCells[cellDescription].data.loadState.hasFullActorList ~= true then
-            trackedSpawns[cellDescription] = {}
+            trackedSpawns[cellDescription] = nil
             table.insert(pendingCells,cellDescription)
             tes3mp.LogMessage(enumerations.log.INFO,"SpawnSystem: Added cell " .. cellDescription .." to cells pending spawns")
             pendingRespawns[cellDescription] = nil
