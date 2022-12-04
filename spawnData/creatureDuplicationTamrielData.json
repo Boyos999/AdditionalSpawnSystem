@@ -316,65 +316,23 @@
           "useMult":true
         }
       ],
-      "t_dae_cre_atroflcyr_01":[
+      "t_dae_cre_auroran_01":[
         {
-          "refId":"t_dae_cre_atroflcyr_01",
+          "refId":"t_dae_cre_auroran_01",
           "count":1,
           "useMult":true
         }
       ],
-      "t_dae_cre_atroflmw_01":[
+      "t_dae_cre_auroran_02":[
         {
-          "refId":"t_dae_cre_atroflmw_01",
+          "refId":"t_dae_cre_auroran_02",
           "count":1,
           "useMult":true
         }
       ],
-      "t_dae_cre_atrofrcyr_01":[
+      "t_dae_cre_devourer_01":[
         {
-          "refId":"t_dae_cre_atrofrcyr_01",
-          "count":1,
-          "useMult":true
-        }
-      ],
-      "t_dae_cre_atrofrmw_01":[
-        {
-          "refId":"t_dae_cre_atrofrmw_01",
-          "count":1,
-          "useMult":true
-        }
-      ],
-      "t_dae_cre_atrostcyr_01":[
-        {
-          "refId":"t_dae_cre_atrostcyr_01",
-          "count":1,
-          "useMult":true
-        }
-      ],
-      "t_dae_cre_atrostmw_01":[
-        {
-          "refId":"t_dae_cre_atrostmw_01",
-          "count":1,
-          "useMult":true
-        }
-      ],
-      "t_dae_cre_clfearcyr_01":[
-        {
-          "refId":"t_dae_cre_clfearcyr_01",
-          "count":1,
-          "useMult":true
-        }
-      ],
-      "t_dae_cre_daedrcyr_01":[
-        {
-          "refId":"t_dae_cre_daedrcyr_01",
-          "count":1,
-          "useMult":true
-        }
-      ],
-      "t_dae_cre_drem_01":[
-        {
-          "refId":"t_dae_cre_drem_01",
+          "refId":"t_dae_cre_devourer_01",
           "count":1,
           "useMult":true
         }
@@ -435,13 +393,6 @@
           "useMult":true
         }
       ],
-      "t_dae_cre_dridbs_01":[
-        {
-          "refId":"t_dae_cre_dridbs_01",
-          "count":1,
-          "useMult":true
-        }
-      ],
       "t_dae_cre_dridgr_01":[
         {
           "refId":"t_dae_cre_dridgr_01",
@@ -470,30 +421,9 @@
           "useMult":true
         }
       ],
-      "t_dae_cre_hungcyr_01":[
-        {
-          "refId":"t_dae_cre_hungcyr_01",
-          "count":1,
-          "useMult":true
-        }
-      ],
       "t_dae_cre_lesserclfr_01":[
         {
           "refId":"t_dae_cre_lesserclfr_01",
-          "count":1,
-          "useMult":true
-        }
-      ],
-      "t_dae_cre_ogrcyr_01":[
-        {
-          "refId":"t_dae_cre_ogrcyr_01",
-          "count":1,
-          "useMult":true
-        }
-      ],
-      "t_dae_cre_scamcyr_01":[
-        {
-          "refId":"t_dae_cre_scamcyr_01",
           "count":1,
           "useMult":true
         }
@@ -757,6 +687,55 @@
           "useMult":true
         }
       ],
+      "t_glb_fau_horkerbrow_02":[
+        {
+          "refId":"t_glb_fau_horkerbrow_02",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_glb_fau_horkerbrow_03":[
+        {
+          "refId":"t_glb_fau_horkerbrow_03",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_glb_fau_horkerbrow_04":[
+        {
+          "refId":"t_glb_fau_horkerbrow_04",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_glb_fau_horkergrey_02":[
+        {
+          "refId":"t_glb_fau_horkergrey_02",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_glb_fau_horkergrey_03":[
+        {
+          "refId":"t_glb_fau_horkergrey_03",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_glb_fau_horkergrey_04":[
+        {
+          "refId":"t_glb_fau_horkergrey_04",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_glb_fau_horkerwhit_02":[
+        {
+          "refId":"t_glb_fau_horkerwhit_02",
+          "count":1,
+          "useMult":true
+        }
+      ],
       "t_glb_fau_lrgspider_01":[
         {
           "refId":"t_glb_fau_lrgspider_01",
@@ -967,9 +946,37 @@
           "useMult":true
         }
       ],
+      "t_mw_cre_gobbrs_01":[
+        {
+          "refId":"t_mw_cre_gobbrs_01",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_mw_cre_gobbru_01":[
+        {
+          "refId":"t_mw_cre_gobbru_01",
+          "count":1,
+          "useMult":true
+        }
+      ],
       "t_mw_cre_gobshm_01":[
         {
           "refId":"t_mw_cre_gobshm_01",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_mw_cre_gobskr_01":[
+        {
+          "refId":"t_mw_cre_gobskr_01",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_mw_cre_gobthr_01":[
+        {
+          "refId":"t_mw_cre_gobthr_01",
           "count":1,
           "useMult":true
         }
@@ -1040,6 +1047,13 @@
       "t_mw_fau_beetlehrds_01":[
         {
           "refId":"t_mw_fau_beetlehrds_01",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_mw_fau_blindslaufi_01":[
+        {
+          "refId":"t_mw_fau_blindslaufi_01",
           "count":1,
           "useMult":true
         }
@@ -1184,6 +1198,20 @@
           "useMult":true
         }
       ],
+      "t_mw_fau_netchhostile_01":[
+        {
+          "refId":"t_mw_fau_netchhostile_01",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_mw_fau_netchhostile_02":[
+        {
+          "refId":"t_mw_fau_netchhostile_02",
+          "count":1,
+          "useMult":true
+        }
+      ],
       "t_mw_fau_nixhds_01":[
         {
           "refId":"t_mw_fau_nixhds_01",
@@ -1215,6 +1243,27 @@
       "t_mw_fau_paravnds_01":[
         {
           "refId":"t_mw_fau_paravnds_01",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_mw_fau_redoranhnd_01":[
+        {
+          "refId":"t_mw_fau_redoranhnd_01",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_mw_fau_redoranhnd_02":[
+        {
+          "refId":"t_mw_fau_redoranhnd_02",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_mw_fau_redoranhnd_03":[
+        {
+          "refId":"t_mw_fau_redoranhnd_03",
           "count":1,
           "useMult":true
         }
@@ -1677,6 +1726,20 @@
       "t_sky_fau_wolfredds_01":[
         {
           "refId":"t_sky_fau_wolfredds_01",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_sky_koglingadult_01":[
+        {
+          "refId":"t_sky_koglingadult_01",
+          "count":1,
+          "useMult":true
+        }
+      ],
+      "t_sky_koglingelder_01":[
+        {
+          "refId":"t_sky_koglingelder_01",
           "count":1,
           "useMult":true
         }
